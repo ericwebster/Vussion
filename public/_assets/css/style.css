@@ -2,9 +2,22 @@
   margin: 0 auto;
   width: 100%; }
 
-header {
-  padding-bottom: 10px; }
-
+.global-header-purple{
+    width:100%;
+    background: #3e1052;
+}
+.global-header-purple h1{
+  margin: 0;
+}
+.global-header-purple h1 img{
+  width:100%;
+}
+.sidebar h4, .sidebar select{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 15px;
+}
 #menu-module {
   position: absolute;
   top: 10px;
