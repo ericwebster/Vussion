@@ -833,7 +833,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff; }
 
@@ -871,7 +871,7 @@ img {
 
 .img-thumbnail {
   padding: 4px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -1091,7 +1091,7 @@ dl {
   margin-bottom: 20px; }
 
 dt, dd {
-  line-height: 1.42857; }
+  line-height: 1.42857143; }
 
 dt {
   font-weight: bold; }
@@ -1131,7 +1131,7 @@ blockquote p:last-child, blockquote ul:last-child, blockquote ol:last-child {
 blockquote footer, blockquote small, blockquote .small {
   display: block;
   font-size: 80%;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #777777; }
 
 blockquote footer:before, blockquote small:before, blockquote .small:before {
@@ -1153,7 +1153,7 @@ blockquote footer:before, blockquote small:before, blockquote .small:before {
 address {
   margin-bottom: 20px;
   font-style: normal;
-  line-height: 1.42857; }
+  line-height: 1.42857143; }
 
 code, kbd, pre, samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
@@ -1186,7 +1186,7 @@ pre {
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   word-break: break-all;
   word-wrap: break-word;
   color: #333333;
@@ -1733,7 +1733,7 @@ th {
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   padding: 8px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd; }
 
@@ -1884,7 +1884,7 @@ output {
   display: block;
   padding-top: 7px;
   font-size: 14px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #555555; }
 
 .form-control {
@@ -1893,7 +1893,7 @@ output {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #555555;
   background-color: #ffffff;
   background-image: none;
@@ -2202,7 +2202,7 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
   white-space: nowrap;
   padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2498,7 +2498,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #333333;
   white-space: nowrap; }
 
@@ -2541,7 +2541,7 @@ tbody.collapse.in {
   display: block;
   padding: 3px 20px;
   font-size: 12px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   color: #777777;
   white-space: nowrap; }
 
@@ -2878,7 +2878,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0; }
 
@@ -3451,7 +3451,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
   position: relative;
   float: left;
   padding: 6px 12px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   text-decoration: none;
   color: #337ab7;
   background-color: #ffffff;
@@ -3679,7 +3679,7 @@ a.badge:hover, a.badge:focus {
   display: block;
   padding: 4px;
   margin-bottom: 20px;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -4421,7 +4421,7 @@ button.close {
 
 .modal-title {
   margin: 0;
-  line-height: 1.42857; }
+  line-height: 1.42857143; }
 
 .modal-body {
   position: relative;
@@ -4578,7 +4578,7 @@ button.close {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.42857;
+  line-height: 1.42857143;
   text-align: left;
   background-color: #ffffff;
   -webkit-background-clip: padding-box;
