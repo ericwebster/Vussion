@@ -28,6 +28,11 @@ app.get('/', function(req, res){
   });
 });
 
+app.get('/app', function(req, res){
+
+    res.redirect('app/index.html');
+});
+
 io.on('connection', function(socket){
   console.log("New user connected >> " + socket.handshake.address);
 
