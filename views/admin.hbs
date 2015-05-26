@@ -24,12 +24,18 @@
         <div class="row">
           <div class="col-md-4 sidebar">
               <h4>Select Module</h4>
-              <select name="current-section">
-                  {{#each sections}}
-                    <option value="{{id}}">{{name}}</option>
-                  {{/each}}
-                
-              </select>
+
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  Module Select
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="current-section">
+                {{#each sections}}
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="{{id}}">{{name}}</a></li>
+                {{/each}}
+                </ul>
+              </div>
 
               <h4>Options</h4>
               <div id="section-options">
@@ -90,7 +96,7 @@
           </div>
 
           <div id="preview-window" class="col-md-8 well">
-            <h4>Presentation Preview</h4>
+            
             <section id="loading" class="active">
               <div class="col-md-12 text-center">
                   <img src="/_assets/images/loading-icon.gif" />

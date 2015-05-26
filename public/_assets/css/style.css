@@ -18,7 +18,7 @@ header {
 }
 .global-header-purple h3 {
   position: absolute;
-  bottom: 0;
+  top: 160px;
   color: #fff;
 }
 .global-header-purple h1 img{
@@ -42,8 +42,41 @@ header {
   outline: none;
   background-color: #dfdfdf;
 }
+.open > .dropdown-menu {
+  display: block;
+  width: 90%;
+  top: 47px;
+  left: 15px;
+}
+.module-list p {
+  padding: 0 0;
+}
+div#preview-window {
+  min-height: 710px;
+}
+button#dropdownMenu1 {
+  width: 90%;
+  float: left;
+  display: block;
+  text-align: left;
+  background-color: #ececec;
+  border: none;
+  margin: 15px;
+}
+.btn .caret {
+  margin-left: 0;
+  float: right;
+  margin: 9px;
+}
+.sidebar p {
+  padding: 15px;
+}
 hr {
   border-color: #aeaeae;
+  width: 95%;
+}
+.module-list p{
+  padding: 0;
 }
 .module-list ul {
   height: 450px;
@@ -53,6 +86,7 @@ hr {
 }
 .module-list ul li{
   padding: 15px 0;
+  overflow: auto;
 }
 #menu-module {
   position: absolute;

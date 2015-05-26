@@ -73,8 +73,10 @@
     },
     bindEvents: function(){
       //switcher for section
-      $("select[name=current-section]").change(function(){
-        Vussion.state.current.sectionID = $(this).val();
+      //this needs to not be a select box :()
+      $(".sidebar .dropdown-menu a").on('click', function(e){
+        e.preventDefault();
+        Vussion.state.current.sectionID = $(this).attr('href');
 
         _.each(Vussion.data.sections, function(el){
           if(el.id === Vussion.state.current.sectionID){
