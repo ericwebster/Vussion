@@ -1,0 +1,114 @@
+
+    
+    <script src="/_assets/js/admin.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      Vussion.init({
+        isAdmin: true
+      });
+    })
+    </script>
+
+    
+    <div id="admin" class="container">
+      <div>
+        <header>
+          <h1><img src="/_assets/images/logo-color.svg" /></h1>
+        </header>
+        
+        <div class="row">
+          <div class="col-md-4">
+              <h4>Current Section</h4>
+              <select name="current-section">
+                  {{#each sections}}
+                    <option value="{{id}}">{{name}}</option>
+                  {{/each}}
+                
+              </select>
+
+              <h4>Options</h4>
+              <div id="section-options">
+              </div>
+          </div>
+
+          <div id="preview-window" class="col-md-8 well">
+            <h4>Presentation Preview</h4>
+            <section id="loading" class="active">
+              <div class="col-md-12 text-center">
+                  <img src="/_assets/images/loading-icon.gif" />
+                  <p>Please Hold</p>
+              </div>
+            </section>
+
+            <section id="slider" class="slider-wrapper">
+            </section>
+
+            <section id="html" class="html-wrapper">
+            </section>
+
+
+            <section id="video" class="video-wrapper">
+            </section>
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script id="slide-template" type="text/x-handlebars-template">
+  <div class="content">
+    <div id="slick-slider">    
+    \{{#each slides}}
+      <div><img src="\{{#assetPath}}\{{media}}\{{/assetPath}}"><h3><!-- {{caption}} --></h3></div>
+    \{{/each}}
+    </div>
+  </div>
+</script> 
+
+<script id="html-template-walk-in" type="text/x-handlebars-template">
+  <div class="content">\{{name}}
+    <h3>Big Disruptive Facts sliders</h3>
+  </div>
+</script>
+
+<script id="html-athena-story" type="text/x-handlebars-template">
+<div class="content">
+  <img src="data/Athena-Story/athena-story-ipad-sit.jpg" />
+<div>
+</script>
+
+<script id="html-template-basic" type="text/x-handlebars-template">
+<div class="content">
+  \{{{html}}}
+<div>
+</script>
+
+<script id="html-self-driven-demo" type="text/x-handlebars-template">
+  <div class="content">
+    <img src="data/Self_Driven_Demo/Athena-4_Self_Driven_Demos.jpg" />
+  <div>
+</script>
+
+<script id="html-quiet-mode" type="text/x-handlebars-template">
+<div class="content">
+  <img src="data/Quiet_Mode/athena-story-ipad-sit.jpg" />
+<div>
+</script>
+
+<script id="video-template" type="text/x-handlebars-template">
+  <div class="content">
+    <ul id="video-selector">
+    \{{#each video}}
+      <li><a href="\{{file}}">\{{name}}</a></li>
+    \{{/each}}
+    </ul>
+
+    <video poster="\{{placeholder}}" id="player-\{{videoPlayerID}}" class="video-js vjs-default-skin"
+        controls preload="auto" width="600" height="450"
+        data-setup='{"example_option":true, "controls": false}'>
+    </video>
+  </div>
+</script>
