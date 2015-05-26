@@ -3,8 +3,10 @@
   width: 100%; }
 
 .global-header-purple{
-    width:100%;
-    background: #3e1052;
+  width:100%;
+  background: #3e1052;
+  margin: 0;
+  padding: 0;
 }
 .global-header-purple h1{
   margin: 0;
@@ -12,11 +14,35 @@
 .global-header-purple h1 img{
   width:100%;
 }
-.sidebar h4, .sidebar select{
+.global-header-purple .col-sm-4 {
+  padding: 0;
+}
+.sidebar h4{
+  display: block;
+  padding: 15px;
+}
+.sidebar select {
   display: block;
   text-align: center;
-  margin: 0 auto;
+  margin: 15px;
   padding: 15px;
+  border-radius: 5px;
+  width: 90%;
+  border: none;
+  outline: none;
+  background-color: #dfdfdf;
+}
+hr {
+  border-color: #aeaeae;
+}
+.module-list ul {
+  height: 450px;
+  overflow-y: scroll;
+  list-style-type: none; 
+  padding-left: 0;
+}
+.module-list ul li{
+  padding: 15px 0;
 }
 #menu-module {
   position: absolute;
