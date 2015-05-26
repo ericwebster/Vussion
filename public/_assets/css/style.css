@@ -7,9 +7,19 @@
   background: #3e1052;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 .global-header-purple h1{
   margin: 0;
+}
+header {
+  overflow: auto;
+  display: block;
+}
+.global-header-purple h3 {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
 }
 .global-header-purple h1 img{
   width:100%;
