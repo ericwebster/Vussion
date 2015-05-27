@@ -198,7 +198,8 @@
           $(sectionEl).html(html).promise().done(function(){
             $("section#" + section.type).addClass("active");
             Vussion.vidplayer = videojs("#player-" + section.videoPlayerID);
-            $("#video-selector a").click(function(){
+            $("#video-selector a").click(function(e){
+              e.preventDefault();
                 Vussion.state.current.video = $(this).attr("href");
                 console.log(Vussion.state.current.video);
                 Vussion.videoChange(Vussion.state.current.video);
