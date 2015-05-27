@@ -37,26 +37,28 @@
                 </ul>
               </div>
 
-              <h4>Options</h4>
+              
               <div id="section-options">
               </div>
 
-              <p>Press 'eascape' on your keyboard to reset video playback</p>
-              <hr>
+             
 
               <div class="module-list col-sm-12">
               
               {{!-- if list --}}
               <script id="video-list" type="text/x-handlebars-template">
                 <div class="content">
-                  <ul id="video-selector">
+                <h4>Options</h4>
+                 <p>Press 'eascape' on your keyboard to reset video playback</p>
+                  <hr>
+                  <ul id="video-selector col-sm-10">
                   \{{#each video}}
                     <li>
-                    <div class="details col-sm-9">
+                    <div class="details col-sm-8">
                       <p class="title">\{{name}}</p>
-                      <a href="\{{file}}" title="play">Play <i>></i></a>
+                      <a class="play-button" href="\{{file}}" title="play">Play <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
                     </div>
-                    <div class="thumbs col-sm-3">
+                    <div class="thumbs">
                       <a href="\{{file}}" title="play"><img src="http://placehold.it/88x54.jpg" alt="#"></a>
                     </div>
                   \{{/each}}
@@ -73,8 +75,9 @@
             
             <section id="loading" class="active">
               <div class="col-md-12 text-center">
+                  
                   <img src="/_assets/images/loading-icon.gif" />
-                  <p>Please Hold</p>
+                  <p><strong>to start</strong> select an option on the left</p>
               </div>
             </section>
 

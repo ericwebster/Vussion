@@ -13,7 +13,7 @@
   margin: 0;
 }
 header {
-  overflow: auto;
+  overflow: hidden;
   display: block;
 }
 .global-header-purple h3 {
@@ -21,8 +21,28 @@ header {
   top: 160px;
   color: #fff;
 }
+.content h4 {
+  padding: 0;
+}
+.play-button{
+  color: #bccc9e;
+}
+.sidebar a img:hover{
+  opacity: .8;
+}
+.sidebar p{
+  color:#3f3f3f;
+}
+.play-button:hover{
+  color: #8d9381;
+}
+.col-md-4.sidebar {
+  max-width: 384px;
+}
 .global-header-purple h1 img{
-  width:100%;
+  width: 100%;
+  max-height: 128px;
+  max-width: 371px;
 }
 .global-header-purple .col-sm-4 {
   padding: 0;
