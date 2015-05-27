@@ -45,53 +45,27 @@
               <hr>
 
               <div class="module-list col-sm-12">
-                <ul>
-                  <li class="">
+              
+              {{!-- if list --}}
+              <script id="video-list" type="text/x-handlebars-template">
+                <div class="content">
+                  <ul id="video-selector">
+                  \{{#each video}}
+                    <li>
                     <div class="details col-sm-9">
-                      <p class="title">Video items seandit fringilla lectus a tincidunt</p>
-                      <a href="#" title="play">Play <i>></i></a>
+                      <p class="title">\{{name}}</p>
+                      <a href="\{{file}}" title="play">Play <i>></i></a>
                     </div>
                     <div class="thumbs col-sm-3">
-                      <img src="http://placehold.it/88x54.jpg" alt="#">
+                      <a href="\{{file}}" title="play"><img src="http://placehold.it/88x54.jpg" alt="#"></a>
                     </div>
-                  </li>
-                  <li class="">
-                    <div class="details col-sm-9">
-                      <p class="title">Video items seandit fringilla lectus a tincidunt</p>
-                      <a href="#" title="play">Play <i>></i></a>
-                    </div>
-                    <div class="thumbs col-sm-3">
-                      <img src="http://placehold.it/88x54.jpg" alt="#">
-                    </div>
-                  </li>
-                  <li class="">
-                    <div class="details col-sm-9">
-                      <p class="title">Video items seandit fringilla lectus a tincidunt</p>
-                      <a href="#" title="play">Play <i>></i></a>
-                    </div>
-                    <div class="thumbs col-sm-3">
-                      <img src="http://placehold.it/88x54.jpg" alt="#">
-                    </div>
-                  </li>
-                  <li class="">
-                    <div class="details col-sm-9">
-                      <p class="title">Video items seandit fringilla lectus a tincidunt</p>
-                      <a href="#" title="play">Play <i>></i></a>
-                    </div>
-                    <div class="thumbs col-sm-3">
-                      <img src="http://placehold.it/88x54.jpg" alt="#">
-                    </div>
-                  </li>
-                  <li class="">
-                    <div class="details col-sm-9">
-                      <p class="title">Video items seandit fringilla lectus a tincidunt</p>
-                      <a href="#" title="play">Play <i>></i></a>
-                    </div>
-                    <div class="thumbs col-sm-3">
-                      <img src="http://placehold.it/88x54.jpg" alt="#">
-                    </div>
-                  </li>
-                </ul>
+                  \{{/each}}
+                  </ul>
+              </script>
+
+              <div class="video-listing">
+              </div>
+
               </div>
           </div>
 
@@ -162,12 +136,6 @@
 
 <script id="video-template" type="text/x-handlebars-template">
   <div class="content">
-    <ul id="video-selector">
-    \{{#each video}}
-      <li><a href="\{{file}}">\{{name}}</a></li>
-    \{{/each}}
-    </ul>
-
     <video poster="\{{placeholder}}" id="player-\{{videoPlayerID}}" class="video-js vjs-default-skin"
         controls preload="auto" width="600" height="450"
         data-setup='{"example_option":true, "controls": false}'>

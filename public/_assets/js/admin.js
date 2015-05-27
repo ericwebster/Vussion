@@ -189,9 +189,12 @@
           break;
 
         case "video":
-          var sectionEl = $("section#" + section.type);
+          var sectionEl = $("section#" + section.type),
+          $listing = $('.video-listing');
           section.videoPlayerID = randomString();
           var html = Vussion.compileTemplate("#video-template", section);
+          var htmlList = Vussion.compileTemplate("#video-list", section);
+          $($listing).html(htmlList).promise().done();
           $(sectionEl).html(html).promise().done(function(){
             $("section#" + section.type).addClass("active");
             Vussion.vidplayer = videojs("#player-" + section.videoPlayerID);
