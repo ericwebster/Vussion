@@ -48,7 +48,7 @@
     },
     state:{
       current:{
-        section: 'loading',
+        modules: 'loading',
         slide: null
       }
     },
@@ -78,9 +78,9 @@
         e.preventDefault();
         Vussion.state.current.sectionID = $(this).attr('href');
 
-        _.each(Vussion.data.sections, function(el){
+        _.each(Vussion.data.modules, function(el){
           if(el.id === Vussion.state.current.sectionID){
-            Vussion.state.current.section = el;
+            Vussion.state.current.modules = el;
             Vussion.cleanupGarbage(function(){
               Vussion.changeSection(el);  
             });
@@ -150,17 +150,17 @@
       });
 
     },
-    changeSection: function(section){
+    changeSection: function(modules){
       //requires Vussion.state.current.section to be updated
       $("section").removeClass("active");     
       
 
-      switch (section.type) {
+      switch (modules.type) {
         case "slider":
           // when an admin changes the section === "slider"
-          var sectionEl = $("section#" + section.type);
+          var sectionEl = $("section#" + modules.type);
 
-          var html = Vussion.compileTemplate("#slide-template", section);
+          var html = Vussion.compileTemplate("#slide-template", modules);
           $(sectionEl).html(html).promise().done(function(){
             Vussion.state.current.slide = 0;
             Vussion.slider = $("#slick-slider").slick({
@@ -170,7 +170,7 @@
               }
             });
 
-            $("section#" + section.type).addClass("active");
+            $("section#" + modules.type).addClass("active");
           })  
 
           
@@ -179,31 +179,31 @@
 
         case "html":
           // when an admin changes the section === "html"
-          var sectionEl = $("section#" + section.type);
-          if(!section.template){
-            section.template = "html-template-basic";
+          var sectionEl = $("section#" + modules.type);
+          if(!modules.template){
+            modules.template = "html-template-basic";
           }
 
-          var html = Vussion.compileTemplate("#"+ section.template, section);
-          console.log(section)
+          var html = Vussion.compileTemplate("#"+ modules.template, modules);
+          console.log(modules)
           console.log(html);
             $(sectionEl).html(html).promise().done(function(){
-              $("section#" + section.type).addClass("active");
+              $("section#" + modules.type).addClass("active");
             })
 
           Vussion.updateClients();
           break;
 
         case "video":
-          var sectionEl = $("section#" + section.type),
+          var sectionEl = $("section#" + modules.type),
           $listing = $('.video-listing');
-          section.videoPlayerID = randomString();
-          var html = Vussion.compileTemplate("#video-template", section);
-          var htmlList = Vussion.compileTemplate("#video-list", section);
+          modules.videoPlayerID = randomString();
+          var html = Vussion.compileTemplate("#video-template", modules);
+          var htmlList = Vussion.compileTemplate("#video-list", modules);
           $($listing).html(htmlList).promise().done();
           $(sectionEl).html(html).promise().done(function(){
-            $("section#" + section.type).addClass("active");
-            Vussion.vidplayer = videojs("#player-" + section.videoPlayerID);
+            $("section#" + modules.type).addClass("active");
+            Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
             $("#video-selector a").click(function(e){
               e.preventDefault();
                 Vussion.state.current.video = $(this).attr("href");
@@ -222,7 +222,7 @@
           break;
 
         case "loading":
-          $("section#" + section.type).addClass("active");
+          $("section#" + modules.type).addClass("active");
           Vussion.updateClients();
           break;
         default:

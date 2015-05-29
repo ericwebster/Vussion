@@ -31,7 +31,7 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="current-section">
-                {{#each sections}}
+                {{#each modules}}
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="{{id}}">{{name}}</a></li>
                 {{/each}}
                 </ul>
@@ -71,9 +71,11 @@
               </div>
           </div>
 
-          <div id="preview-window" class="col-md-8 well">
+          <div id="preview-window" class="col-sm-8 well">
             
-            <section id="loading" class="active">
+            <div class="sharp-iphone col-sm-4">
+              <h3>Dr. Sharp's Device</h3>
+                 <section id="loading" class="active">
               <div class="col-md-12 text-center">
                   
                   <img src="/_assets/images/loading-icon.gif" />
@@ -91,7 +93,54 @@
             <section id="video" class="video-wrapper">
             </section>
 
+
+            </div>
+            <div class="ipads col-sm-4">
+              <h3>iPads</h3>
+                 <section id="loading" class="active">
+              <div class="col-md-12 text-center">
+                  
+                  <img src="/_assets/images/loading-icon.gif" />
+                  <p><strong>to start</strong> select an option on the left</p>
+              </div>
+            </section>
+
+            <section id="slider" class="slider-wrapper">
+            </section>
+
+            <section id="html" class="html-wrapper">
+            </section>
+
+
+            <section id="video" class="video-wrapper">
+            </section>
+
+
+            </div>
+            <div class="iphone col-sm-4">
+              <h3>Terry's Device</h3>
+                 <section id="loading" class="active">
+              <div class="col-md-12 text-center">
+                  
+                  <img src="/_assets/images/loading-icon.gif" />
+                  <p><strong>to start</strong> select an option on the left</p>
+              </div>
+            </section>
+
+            <section id="slider" class="slider-wrapper">
+            </section>
+
+            <section id="html" class="html-wrapper">
+            </section>
+
+
+            <section id="video" class="video-wrapper">
+            </section>
+
+
+            </div>
           </div>
+
       </div>
   </div>
 
