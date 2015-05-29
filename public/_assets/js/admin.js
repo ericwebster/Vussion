@@ -65,10 +65,14 @@
         url: "/data/script.json",
         success: function(res){
           Vussion.data = res;
+           Vussion.loadContent(res);
         }
       });
+
+      console.log(Vussion.state.current);
       Vussion.registerHandlebarHelpers();
       Vussion.bindEvents();
+     
       Vussion.resetAllClients();
     },
     bindEvents: function(){
@@ -152,8 +156,7 @@
     },
     changeSection: function(modules){
       //requires Vussion.state.current.section to be updated
-      $("section").removeClass("active");     
-      
+      $("section").removeClass("active");  
 
       switch (modules.type) {
         case "slider":
@@ -234,7 +237,25 @@
       //Vussion.adminControl.slickGoTo(0);
       
     },
-    loadContent: function(){
+    loadContent: function(res){
+      // init display
+      console.log(res); 
 
+      // how many devices?
+      $.each(res.devices, function(i, dev) {
+        var deviceName = dev.name,
+        deviceID = dev.id,
+        col = (12/res.devices.length);
+        //i need a default preview for each screen built
+       $('#preview-window').append('<div class="'+ deviceID +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
+        '<section  id="slider">'+
+        '<img src="../images/loading-icon.gif" /></section></div>'); 
+      });
+
+    },
+    mediaPlayer: function(modules){
+      //what type of media am I building?
+
+      //build it
     }
   };  

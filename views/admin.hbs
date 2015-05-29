@@ -72,73 +72,8 @@
           </div>
 
           <div id="preview-window" class="col-sm-8 well">
+            {{!-- render devices on load --}}
             
-            <div class="sharp-iphone col-sm-4">
-              <h3>Dr. Sharp's Device</h3>
-                 <section id="loading" class="active">
-              <div class="col-md-12 text-center">
-                  
-                  <img src="/_assets/images/loading-icon.gif" />
-                  <p><strong>to start</strong> select an option on the left</p>
-              </div>
-            </section>
-
-            <section id="slider" class="slider-wrapper">
-            </section>
-
-            <section id="html" class="html-wrapper">
-            </section>
-
-
-            <section id="video" class="video-wrapper">
-            </section>
-
-
-            </div>
-            <div class="ipads col-sm-4">
-              <h3>iPads</h3>
-                 <section id="loading" class="active">
-              <div class="col-md-12 text-center">
-                  
-                  <img src="/_assets/images/loading-icon.gif" />
-                  <p><strong>to start</strong> select an option on the left</p>
-              </div>
-            </section>
-
-            <section id="slider" class="slider-wrapper">
-            </section>
-
-            <section id="html" class="html-wrapper">
-            </section>
-
-
-            <section id="video" class="video-wrapper">
-            </section>
-
-
-            </div>
-            <div class="iphone col-sm-4">
-              <h3>Terry's Device</h3>
-                 <section id="loading" class="active">
-              <div class="col-md-12 text-center">
-                  
-                  <img src="/_assets/images/loading-icon.gif" />
-                  <p><strong>to start</strong> select an option on the left</p>
-              </div>
-            </section>
-
-            <section id="slider" class="slider-wrapper">
-            </section>
-
-            <section id="html" class="html-wrapper">
-            </section>
-
-
-            <section id="video" class="video-wrapper">
-            </section>
-
-
-            </div>
           </div>
 
       </div>
@@ -182,7 +117,11 @@
 
 <script id="html-quiet-mode" type="text/x-handlebars-template">
 <div class="content">
-  <img src="data/Quiet_Mode/athena-story-ipad-sit.jpg" />
+ {{!--  <img src="data/Quiet_Mode/athena-story-ipad-sit.jpg" /> --}}
+  <video poster="\{{placeholder}}" id="player-\{{videoPlayerID}}" class="video-js vjs-default-skin"
+        controls preload="auto" width="600" height="450"
+        data-setup='{"example_option":true, "controls": false}'>
+    </video>
 <div>
 </script>
 
@@ -193,4 +132,27 @@
         data-setup='{"example_option":true, "controls": false}'>
     </video>
   </div>
+</script>
+
+
+<script id="uber-template" type="text/x-handlebars-template">
+  
+  <div class="content">
+    {{!-- if default --}}
+
+    {{!-- if video --}}
+    <video poster="\{{placeholder}}" id="player-\{{videoPlayerID}}" class="video-js vjs-default-skin"
+        controls preload="auto" width="600" height="450"
+        data-setup='{"example_option":true, "controls": false}'>
+    </video>
+    {{!-- if slides --}}
+    <div id="slick-slider">    
+    \{{#each slides}}
+      <div><img src="\{{#assetPath}}\{{media}}\{{/assetPath}}"><h3><!-- {{caption}} --></h3></div>
+    \{{/each}}
+    </div>
+
+
+  </div>
+
 </script>
