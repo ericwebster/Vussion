@@ -1,60 +1,150 @@
 {
 	"client": "Athena Health",
-	"sections":[{
-		"name": "Loading Screen",
-		"id": "0",
-		"type": "loading"
-	},{
+	"modules":[{
 		"name": "Walk In >> Big Disruptive Facts Slideshow",
 		"id": "1",
 		"type": "html",
-		"template": "html-template-walk-in"
+		"template": "html-template-walk-in",
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading"
+				}
+			}
+		}
 	},{
 		"name": "Cramer Approach >> Sit Slide",
 		"id": "2",
 		"type": "html",
 		"template": "html-template-basic",
-		"html": "<img src='data/Sit_Slides/the-cramer-approach-sit.jpg' />"
-
+		"html": "<img src='data/Sit_Slides/the-cramer-approach-sit.jpg' />",
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading"
+				}
+			}
+		}
 	},{
 		"name": "Athena's Story >> Sit Slide",
 		"id": "3",
 		"type": "html",
 		"template": "html-template-basic",
-		"html": "<img src='data/Sit_Slides/athena-story-ipad-sit.jpg' />"
-
+		"html": "<img src='data/Sit_Slides/athena-story-ipad-sit.jpg' />",
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading"
+				}
+			}
+		}
 	},{
 		"name": "Product Presentation > Check In: Admin POV",
 		"id": "4",
 		"placeholder" : "data/Sit_Slides/product-pres-sit.jpg",
 		"type": "video",
-		"video":[{
-			"file": "data/Product-Presentation/iPad-1-Phone-Text.mp4", 
-			"name": "iPad 1 Phone Text"
-		},{
-			"file": "data/Product-Presentation/iPad-2-Patient-Confirmation.mp4", 
-			"name": "iPad-2-Patient-Confirmation"
-		},{
-			"file": "data/Product-Presentation/iPad-3-Group-Number.mp4", 
-			"name": "iPad-3-Group-Number"
-		},{
-			"file": "data/Product-Presentation/iPad-4-Credit-Card-Payment.mp4", 
-			"name": "iPad-4-Credit-Card-Payment"
-		},{
-			"file": "data/Product-Presentation/iPad-5-Commonwell.mp4", 
-			"name": "iPad-5-Commonwell"
-		}]
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading",
+					"video":[{
+						"file": "data/Product-Presentation/iPad-1-Phone-Text.mp4", 
+						"name": "iPad 1 Phone Text"
+					},{
+						"file": "data/Product-Presentation/iPad-2-Patient-Confirmation.mp4", 
+						"name": "iPad-2-Patient-Confirmation"
+					},{
+						"file": "data/Product-Presentation/iPad-3-Group-Number.mp4", 
+						"name": "iPad-3-Group-Number"
+					},{
+						"file": "data/Product-Presentation/iPad-4-Credit-Card-Payment.mp4", 
+						"name": "iPad-4-Credit-Card-Payment"
+					},{
+						"file": "data/Product-Presentation/iPad-5-Commonwell.mp4", 
+						"name": "iPad-5-Commonwell"
+					}]
+				}
+			}
+		}
 	},{
 		"name": "Self Diven Demos",
 		"id": "5",
 		"type": "html",
 		"template": "html-self-driven-demo",
-		"html":""
+		"html":"",
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading"
+				}
+			}
+		}
 	},{
 		"name": "Thank You > Quiet Mode",
 		"id": "6",
 		"type": "html",
 		"template": "html-template-basic",
-		"html": "<img src='data/Sit_Slides/live-demo-sit.jpg' />"
+		"html": "<img src='data/Sit_Slides/live-demo-sit.jpg' />",
+		"devices":{
+			"device": {
+				"ipads":{		
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone1":{
+					"id": "0",
+					"type": "loading"
+				},
+				"iphone2":{
+					"id": "0",
+					"type": "loading"
+				}
+			}
+		}
 	}]
 }
