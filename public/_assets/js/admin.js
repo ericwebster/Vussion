@@ -96,7 +96,13 @@
       })
 
     },
+    displayDefaultSlide: function() {
+      //update all to the module sit slide
+      //TODO: set up modules and their defaults
+      Vussion.socket.emit('update', Vussion.state.current);
+    },
     resetAllClients: function(){
+      //check if clients need to be updated
       Vussion.socket.emit('update', Vussion.state.current);
     },
     sendCurrentState:function(){
@@ -203,7 +209,12 @@
                 Vussion.state.current.video = $(this).attr("href");
                 console.log(Vussion.state.current.video);
                 Vussion.videoChange(Vussion.state.current.video);
-                Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play();
+                //fade to default module slide when video ends
+                Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
+                  console.log('shows over');
+                  // Vussion.cleanupGarbage();
+
+                });
                 return false;
             })
             Vussion.updateClients();
