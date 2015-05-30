@@ -85,6 +85,7 @@
         _.each(Vussion.data.modules, function(el){
           if(el.id === Vussion.state.current.sectionID){
             Vussion.state.current.modules = el;
+            console.log('bind',el);
             Vussion.cleanupGarbage(function(){
               Vussion.changeSection(el);  //TO REMOVE
               Vussion.mediaPlayer(el);  
@@ -157,82 +158,82 @@
     },
     changeSection: function(modules){
       //requires Vussion.state.current.section to be updated
-      $("section").removeClass("active");  
+      // $("section").removeClass("active");  
 
-      switch (modules.type) {
-        case "slider":
-          // when an admin changes the section === "slider"
-          var sectionEl = $("section#" + modules.type);
+      // switch (modules.content[0].type) {
+      //   case "slider":
+      //     // when an admin changes the section === "slider"
+      //     var sectionEl = $("section#" + modules.type);
 
-          var html = Vussion.compileTemplate("#slide-template", modules);
-          $(sectionEl).html(html).promise().done(function(){
-            Vussion.state.current.slide = 0;
-            Vussion.slider = $("#slick-slider").slick({
-              onAfterChange: function(slider){
-                Vussion.state.current.slide = slider.currentSlide;
-                Vussion.sliderChange(slider.currentSlide);
-              }
-            });
+      //     var html = Vussion.compileTemplate("#slide-template", modules);
+      //     $(sectionEl).html(html).promise().done(function(){
+      //       Vussion.state.current.slide = 0;
+      //       Vussion.slider = $("#slick-slider").slick({
+      //         onAfterChange: function(slider){
+      //           Vussion.state.current.slide = slider.currentSlide;
+      //           Vussion.sliderChange(slider.currentSlide);
+      //         }
+      //       });
 
-            $("section#" + modules.type).addClass("active");
-          })  
+      //       $("section#" + modules.type).addClass("active");
+      //     })  
 
           
-          Vussion.updateClients();
-          break;
+      //     Vussion.updateClients();
+      //     break;
 
-        case "html":
-          // when an admin changes the section === "html"
-          var sectionEl = $("section#" + modules.type);
-          if(!modules.template){
-            modules.template = "html-template-basic";
-          }
+      //   case "html":
+      //     // when an admin changes the section === "html"
+      //     var sectionEl = $("section#" + modules.type);
+      //     if(!modules.template){
+      //       modules.template = "html-template-basic";
+      //     }
 
-          var html = Vussion.compileTemplate("#"+ modules.template, modules);
-          console.log(modules)
-          console.log(html);
-            $(sectionEl).html(html).promise().done(function(){
-              $("section#" + modules.type).addClass("active");
-            })
+      //     var html = Vussion.compileTemplate("#"+ modules.template, modules);
+      //     console.log(modules)
+      //     console.log(html);
+      //       $(sectionEl).html(html).promise().done(function(){
+      //         $("section#" + modules.type).addClass("active");
+      //       })
 
-          Vussion.updateClients();
-          break;
+      //     Vussion.updateClients();
+      //     break;
 
-        case "video":
-          var sectionEl = $("section#" + modules.type),
-          $listing = $('.video-listing');
-          modules.videoPlayerID = randomString();
-          var html = Vussion.compileTemplate("#video-template", modules);
-          var htmlList = Vussion.compileTemplate("#video-list", modules);
-          $($listing).html(htmlList).promise().done();
-          $(sectionEl).html(html).promise().done(function(){
-            $("section#" + modules.type).addClass("active");
-            Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
-            $("#video-selector a").click(function(e){
-              e.preventDefault();
-                Vussion.state.current.video = $(this).attr("href");
-                console.log(Vussion.state.current.video);
-                Vussion.videoChange(Vussion.state.current.video);
-                //fade to default module slide when video ends
-                Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
-                  console.log('shows over');
-                  // Vussion.cleanupGarbage();
+      //   case "video":
+      //     var sectionEl = $("section#" + modules.type),
+      //     $listing = $('.video-listing');
+      //     modules.videoPlayerID = randomString();
+      //     var html = Vussion.compileTemplate("#video-template", modules);
+      //     var htmlList = Vussion.compileTemplate("#video-list", modules);
+      //     $($listing).html(htmlList).promise().done();
+      //     $(sectionEl).html(html).promise().done(function(){
+      //       $("section#" + modules.type).addClass("active");
+      //       Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
+      //       $("#video-selector a").click(function(e){
+      //         e.preventDefault();
+      //           Vussion.state.current.video = $(this).attr("href");
+      //           console.log(Vussion.state.current.video);
+      //           Vussion.videoChange(Vussion.state.current.video);
+      //           //fade to default module slide when video ends
+      //           Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
+      //             console.log('shows over');
+      //             // Vussion.cleanupGarbage();
 
-                });
-                return false;
-            })
-            Vussion.updateClients();
-          })
-          break;
+      //           });
+      //           return false;
+      //       })
+      //       Vussion.updateClients();
+      //     })
+      //     break;
 
-        case "loading":
-          $("section#" + modules.type).addClass("active");
-          Vussion.updateClients();
-          break;
-        default:
-          console.log("hmmm I dont know what to do with this one.");
-          break;
-      }
+      //   case "loading":
+      //     $("section#" + modules.type).addClass("active");
+      //     Vussion.updateClients();
+      //     break;
+      //   default:
+      //     console.log("hmmm I dont know what to do with this one.");
+      //     break;
+      // }
 
       
       //Vussion.adminControl.slickGoTo(0);
@@ -249,15 +250,28 @@
         col = (12/res.devices.length);
         //i need a default preview for each screen built
        $('#preview-window').append('<div class="'+ deviceID +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
-        '<section  class="slider">'+
+        '<section  class="media-player">'+
         '<img src="../../_assets/images/loading-icon.gif" /></section></div>'); 
       });
 
     },
     mediaPlayer: function(modules){
+      $("section").removeClass("active");  
       //what type of media am I building?
       console.log(modules);
-      console.log(modules.type);
+      //iterate through content
+      $.each(modules.content, function(i, content) {
+        //console.log(modules.content[0].type);
+        var device =  content.deviceID;
+        //cleanDefault
+        $('#preview-window section img').remove();//should be device ID from load content
+        //append to individual device
+        //TODO: does not check device permissions
+        $('.media-player').append('<div class="'+ content.type +'">'+ content.name +'</div>') 
+      });
+      //need selected view
+
+      
       //build it
     }
   };  
