@@ -248,8 +248,8 @@
         col = (12/res.devices.length);
         //i need a default preview for each screen built
        $('#preview-window').append('<div class="'+ deviceID +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
-        '<section  id="slider">'+
-        '<img src="../images/loading-icon.gif" /></section></div>'); 
+        '<section  class="slider">'+
+        '<img src="../../_assets/images/loading-icon.gif" /></section></div>'); 
       });
 
     },
