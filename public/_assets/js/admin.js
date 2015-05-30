@@ -86,7 +86,8 @@
           if(el.id === Vussion.state.current.sectionID){
             Vussion.state.current.modules = el;
             Vussion.cleanupGarbage(function(){
-              Vussion.changeSection(el);  
+              Vussion.changeSection(el);  //TO REMOVE
+              Vussion.mediaPlayer(el);  
             });
             
             return false;
@@ -255,7 +256,8 @@
     },
     mediaPlayer: function(modules){
       //what type of media am I building?
-
+      console.log(modules);
+      console.log(modules.type);
       //build it
     }
   };  

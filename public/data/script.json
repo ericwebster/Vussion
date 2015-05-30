@@ -32,7 +32,7 @@
 		"content":[{
 			"name":"",
 			"deviceID": [0],
-			"tpye":"video",
+			"type":"video",
 			"media":"/"
 		}]
 	}]
