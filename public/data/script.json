@@ -2,21 +2,24 @@
 	"client": "Athena Health",
 	"devices":[{
 			"name":"ipad",
+			"freindlyName": "ipad",
 			"id":0
 		},{
 			"name": "Dr. Sharp iPhone",
+			"freindlyName": "sharp-iphone",
 			"id":1
 		},{
-			"name" : "Terry's iPhone",
+			"name": "Terry's iPhone",
+			"freindlyName": "terry-iphone",
 			"id": 2
 		}],
 	"modules":[{
 		"name": "Module 1",
 		"id": "1",
-		"background": "img",
+		"background": "http://placehold.it/450x250.jpg",
 		"content":[{
 			"name":"Video 1",
-			"deviceID": [1],
+			"deviceID": [0,1],
 			"type":"video",
 			"media":"/"
 		},{
@@ -27,11 +30,51 @@
 		}]
 	},{
 		"name": "Module 2",
-		"id": "1",
-		"background": "img",
+		"id": "2",
+		"background": "http://placehold.it/450x250.jpg",
+		"content":[{
+			"name":"Module - video 2",
+			"deviceID": [0,1,2],
+			"type":"video",
+			"media":"/"
+		}]
+	},{
+		"name": "Module 3",
+		"id": "2",
+		"background": "http://placehold.it/450x250.jpg",
+		"content":[{
+			"name":"Module 3 slide 1",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"http://placehold.it/450x150.jpg"
+		},{
+			"name":"Module 3 slide 2",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"http://placehold.it/450x150.jpg"
+		},{
+			"name":"Module 3 slide 3",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"http://placehold.it/450x150.jpg"
+		}]
+	},{
+		"name": "Module 4",
+		"id": "2",
+		"background": "http://placehold.it/450x250.jpg",
 		"content":[{
 			"name":"",
-			"deviceID": [0],
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"/"
+		}]
+	},{
+		"name": "Module 5",
+		"id": "2",
+		"background": "http://placehold.it/450x250.jpg",
+		"content":[{
+			"name":"",
+			"deviceID": [0,1,2],
 			"type":"video",
 			"media":"/"
 		}]

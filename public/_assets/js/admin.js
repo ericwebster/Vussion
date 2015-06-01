@@ -66,16 +66,16 @@
         success: function(res){
           Vussion.data = res;
            Vussion.loadContent(res);
+           Vussion.bindEvents(res);
         }
       });
 
       console.log(Vussion.state.current);
       Vussion.registerHandlebarHelpers();
-      Vussion.bindEvents();
      
       Vussion.resetAllClients();
     },
-    bindEvents: function(){
+    bindEvents: function(res){
       //switcher for section
       //this needs to not be a select box :()
       $(".sidebar .dropdown-menu a").on('click', function(e){
@@ -85,10 +85,9 @@
         _.each(Vussion.data.modules, function(el){
           if(el.id === Vussion.state.current.sectionID){
             Vussion.state.current.modules = el;
-            console.log('bind',el);
             Vussion.cleanupGarbage(function(){
               Vussion.changeSection(el);  //TO REMOVE
-              Vussion.mediaPlayer(el);  
+              Vussion.mediaPlayer(el, res);  
             });
             
             return false;
@@ -247,31 +246,54 @@
       $.each(res.devices, function(i, dev) {
         var deviceName = dev.name,
         deviceID = dev.id,
+        fName = dev.freindlyName,
         col = (12/res.devices.length);
+
         //i need a default preview for each screen built
-       $('#preview-window').append('<div class="'+ deviceID +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
+       $('#preview-window').append('<div class="'+ fName +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
         '<section  class="media-player">'+
         '<img src="../../_assets/images/loading-icon.gif" /></section></div>'); 
       });
 
     },
-    mediaPlayer: function(modules){
+    mediaPlayer: function(modules, res){
       $("section").removeClass("active");  
-      //what type of media am I building?
-      console.log(modules);
-      //iterate through content
-      $.each(modules.content, function(i, content) {
-        //console.log(modules.content[0].type);
-        var device =  content.deviceID;
-        //cleanDefault
-        $('#preview-window section img').remove();//should be device ID from load content
-        //append to individual device
-        //TODO: does not check device permissions
-        $('.media-player').append('<div class="'+ content.type +'">'+ content.name +'</div>') 
-      });
-      //need selected view
-
       
+      //iterate through content
+        var device = modules.content[0].deviceID,
+        content = modules.content[0].type;
+
+          $.each(device, function(i, val) {
+            var fName = res.devices[val].freindlyName,
+            sit = modules.background,
+            device = $('.'+ fName);
+            // clean what is there
+            $('.'+ fName +' .media-player').remove();
+           
+           device.append('<div class="'+ content +' media-player"><video poster="'+ sit +'" id="player-'+ fName +'" class="video-js vjs-default-skin"'+
+            'controls preload="auto" width="" height="" data-setup=\{"example_option"\:true, "controls"\: false\}>'+
+            '</video></div>'); 
+          });
+
+        if (content == 'video') {
+              var htmlList = Vussion.compileTemplate("#video-list", modules),
+              $listing = $('.video-listing');
+              $($listing).html(htmlList).promise().done();
+              $("#video-selector a").click(function(e){
+              e.preventDefault();
+                Vussion.state.current.video = $(this).attr("href");
+                console.log(Vussion.state.current.video);
+                Vussion.videoChange(Vussion.state.current.video);
+                //fade to default module slide when video ends
+                Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
+                  console.log('shows over');
+                  // Vussion.cleanupGarbage();
+
+                });
+           }else{
+            //remove
+            // this template gots to go
+           };
       //build it
     }
   };  
