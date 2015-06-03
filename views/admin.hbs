@@ -46,7 +46,7 @@
               <div class="module-list col-sm-12">
               
               {{!-- if list --}}
-              <script id="video-list" type="text/x-handlebars-template">
+              <script id="item-list" type="text/x-handlebars-template">
                 <div class="content">
                 <h4>Options</h4>
                  <p>Press 'eascape' on your keyboard to reset video playback</p>
@@ -56,10 +56,10 @@
                     <li>
                     <div class="details col-sm-8">
                       <p class="title">\{{name}}</p>
-                      <a class="play-button" href="\{{file}}" title="play">Play <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+                      <a class="play-button \{{type}}" href="\{{media}}" title="play">Play <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
                     </div>
-                    <div class="thumbs">
-                      <a href="\{{file}}" title="play"><img src="http://placehold.it/88x54.jpg" alt="#"></a>
+                    <div class="thumbs col-sm-4">
+                      <a class="\{{type}}" href="\{{media}}" title="play"><img src="\{{poster}}" alt="#"></a>
                     </div>
                   \{{/each}}
                   </ul>

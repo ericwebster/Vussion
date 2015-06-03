@@ -16,12 +16,12 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
-// Compile Our Sass
-gulp.task('sass', function() {
-    return gulp.src('src/_assets/css/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('public/_assets/css'));
-});
+// Compile Our Sass - @EW: why? what sass?
+//gulp.task('sass', function() {
+   // return gulp.src('src/_assets/css/*.scss')
+    //    .pipe(sass())
+  //      .pipe(gulp.dest('public/_assets/css'));
+//});
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {

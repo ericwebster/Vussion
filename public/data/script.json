@@ -2,7 +2,7 @@
 	"client": "Athena Health",
 	"devices":[{
 			"name":"ipad",
-			"freindlyName": "ipad",
+			"freindlyName": "iPad",
 			"id":0
 		},{
 			"name": "Dr. Sharp iPhone",
@@ -14,69 +14,88 @@
 			"id": 2
 		}],
 	"modules":[{
-		"name": "Module 1",
+		"name": "Module 1 VIDEO",
 		"id": "1",
-		"background": "http://placehold.it/450x250.jpg",
+		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
 		"content":[{
 			"name":"Video 1",
 			"deviceID": [0,1],
 			"type":"video",
-			"media":"/"
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Video 2",
 			"deviceID": [0],
 			"type":"video",
-			"media":"/"
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
-		"name": "Module 2",
+		"name": "Module 2 VIDEO",
 		"id": "2",
-		"background": "http://placehold.it/450x250.jpg",
+		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
 		"content":[{
 			"name":"Module - video 2",
 			"deviceID": [0,1,2],
 			"type":"video",
-			"media":"/"
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
-		"name": "Module 3",
-		"id": "2",
-		"background": "http://placehold.it/450x250.jpg",
+		"name": "Module 3 SLIDES",
+		"id": "3",
+		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
 		"content":[{
 			"name":"Module 3 slide 1",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"http://placehold.it/450x150.jpg"
+			"media":"data/Sit_Slides/athena-story-ipad-sit.jpg",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Module 3 slide 2",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"http://placehold.it/450x150.jpg"
+			"media":"data/Sit_Slides/live-demo-sit.jpg",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Module 3 slide 3",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"http://placehold.it/450x150.jpg"
+			"media":"data/Sit_Slides/product-pres-sit.jpg",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
-		"name": "Module 4",
-		"id": "2",
-		"background": "http://placehold.it/450x250.jpg",
+		"name": "Module 4 SLIDES",
+		"id": "4",
+		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
 		"content":[{
-			"name":"",
+			"name":"Module 4 - slide 1",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"/"
+			"media":"data/Sit_Slides/product-pres-sit.jpg",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
 		"name": "Module 5",
-		"id": "2",
+		"id": "5",
 		"background": "http://placehold.it/450x250.jpg",
 		"content":[{
-			"name":"",
+			"name":"module 5 slide",
 			"deviceID": [0,1,2],
 			"type":"video",
-			"media":"/"
+			"media":"/",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+		}]
+	},{
+		"name": "Module 6 HTML",
+		"id": "6",
+		"background": "http://placehold.it/450x250.jpg",
+		"content":[{
+			"name":"module 6 html",
+			"deviceID": [0,1,2],
+			"type":"html",
+			"media":"/",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	}]
 }

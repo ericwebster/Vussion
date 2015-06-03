@@ -156,87 +156,7 @@
 
     },
     changeSection: function(modules){
-      //requires Vussion.state.current.section to be updated
-      // $("section").removeClass("active");  
 
-      // switch (modules.content[0].type) {
-      //   case "slider":
-      //     // when an admin changes the section === "slider"
-      //     var sectionEl = $("section#" + modules.type);
-
-      //     var html = Vussion.compileTemplate("#slide-template", modules);
-      //     $(sectionEl).html(html).promise().done(function(){
-      //       Vussion.state.current.slide = 0;
-      //       Vussion.slider = $("#slick-slider").slick({
-      //         onAfterChange: function(slider){
-      //           Vussion.state.current.slide = slider.currentSlide;
-      //           Vussion.sliderChange(slider.currentSlide);
-      //         }
-      //       });
-
-      //       $("section#" + modules.type).addClass("active");
-      //     })  
-
-          
-      //     Vussion.updateClients();
-      //     break;
-
-      //   case "html":
-      //     // when an admin changes the section === "html"
-      //     var sectionEl = $("section#" + modules.type);
-      //     if(!modules.template){
-      //       modules.template = "html-template-basic";
-      //     }
-
-      //     var html = Vussion.compileTemplate("#"+ modules.template, modules);
-      //     console.log(modules)
-      //     console.log(html);
-      //       $(sectionEl).html(html).promise().done(function(){
-      //         $("section#" + modules.type).addClass("active");
-      //       })
-
-      //     Vussion.updateClients();
-      //     break;
-
-      //   case "video":
-      //     var sectionEl = $("section#" + modules.type),
-      //     $listing = $('.video-listing');
-      //     modules.videoPlayerID = randomString();
-      //     var html = Vussion.compileTemplate("#video-template", modules);
-      //     var htmlList = Vussion.compileTemplate("#video-list", modules);
-      //     $($listing).html(htmlList).promise().done();
-      //     $(sectionEl).html(html).promise().done(function(){
-      //       $("section#" + modules.type).addClass("active");
-      //       Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
-      //       $("#video-selector a").click(function(e){
-      //         e.preventDefault();
-      //           Vussion.state.current.video = $(this).attr("href");
-      //           console.log(Vussion.state.current.video);
-      //           Vussion.videoChange(Vussion.state.current.video);
-      //           //fade to default module slide when video ends
-      //           Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
-      //             console.log('shows over');
-      //             // Vussion.cleanupGarbage();
-
-      //           });
-      //           return false;
-      //       })
-      //       Vussion.updateClients();
-      //     })
-      //     break;
-
-      //   case "loading":
-      //     $("section#" + modules.type).addClass("active");
-      //     Vussion.updateClients();
-      //     break;
-      //   default:
-      //     console.log("hmmm I dont know what to do with this one.");
-      //     break;
-      // }
-
-      
-      //Vussion.adminControl.slickGoTo(0);
-      
     },
     loadContent: function(res){
       // init display
@@ -250,50 +170,146 @@
         col = (12/res.devices.length);
 
         //i need a default preview for each screen built
-       $('#preview-window').append('<div class="'+ fName +' col-sm-'+ col +'"><h3>'+ deviceName +'</h3>'+
-        '<section  class="media-player">'+
+       $('#preview-window').append('<div id="'+ fName +'" class="'+ fName +' col-sm-'+ col +'">'+
+        '<h3>'+ deviceName +'</h3>'+
+        '<img class="'+ fName +'" src="../../_assets/images/'+ fName +'.png"/> <section  class="media-player">'+
         '<img src="../../_assets/images/loading-icon.gif" /></section></div>'); 
       });
 
     },
     mediaPlayer: function(modules, res){
+      var $mediaPlayerWrapper = '<section class="media-player"></section>';
       $("section").removeClass("active");  
       
-      //iterate through content
-        var device = modules.content[0].deviceID,
-        content = modules.content[0].type;
+        //iterate through model
+        var name = modules.name,
+        id = modules.id,
+        background = modules.background,
+        content = modules.content,
+        devices = res.devices; //use as default
 
-          $.each(device, function(i, val) {
-            var fName = res.devices[val].freindlyName,
-            sit = modules.background,
-            device = $('.'+ fName);
-            // clean what is there
-            $('.'+ fName +' .media-player').remove();
-           
-           device.append('<div class="'+ content +' media-player"><video poster="'+ sit +'" id="player-'+ fName +'" class="video-js vjs-default-skin"'+
-            'controls preload="auto" width="" height="" data-setup=\{"example_option"\:true, "controls"\: false\}>'+
-            '</video></div>'); 
+        //unecessary cleanup?
+        $('video').remove();
+
+          $.each(devices, function(i, dev) { // for all devices by default
+             var deviceName = dev.name,
+              deviceID = dev.id,
+              fName = dev.freindlyName;
+
+            // var fName = res.devices[val].freindlyName, //this devices friendly name
+            // content = modules.content[0].type, // for this first piece of content
+            // sit = modules.content[0].media, //init. loading screen for that module
+            // device = $('.'+ fName),
+            // playerOptions; // grab class by friendly name
+
+            // playerOptions = { 
+            //   controls: false,
+            //   autoplay: false,
+            //   preload: "auto"
+            //   }
+            $('.'+fName + ' .media-player').remove();
+            $('.'+fName).append($mediaPlayerWrapper);
+            
+           // device.append('<div class="'+ content +' media-player"><video poster="'+ sit +'" id="player-'+ fName +'" class="video-js vjs-default-skin"'+
+           //  'controls preload="auto" webkit-playsinline controls="false" width="" height="auto"'+
+           //  '</video></div>'); 
+            // need to find the size of the player
+           //$('video#player-'+ fName).width(device.width());
           });
 
-        if (content == 'video') {
-              var htmlList = Vussion.compileTemplate("#video-list", modules),
+          $('.media-player').append('<img class="background" src="'+ background +'" />');
+
+          //build list of modules
+            var htmlList = Vussion.compileTemplate("#item-list", modules),
               $listing = $('.video-listing');
               $($listing).html(htmlList).promise().done();
-              $("#video-selector a").click(function(e){
-              e.preventDefault();
-                Vussion.state.current.video = $(this).attr("href");
-                console.log(Vussion.state.current.video);
-                Vussion.videoChange(Vussion.state.current.video);
-                //fade to default module slide when video ends
-                Vussion.vidplayer.src(Vussion.settings.pathToAssets + Vussion.state.current.video).play().on('ended', function(){
-                  console.log('shows over');
-                  // Vussion.cleanupGarbage();
+        
 
+            //navigation for modules
+            $("#video-selector a").click(function(e){
+
+                var contentNUM = $(this).closest('li').index(),
+                devices = modules.content[contentNUM].deviceID,
+                sit = modules.content[contentNUM].poster;// use for content index
+              e.preventDefault();
+              //discern type of media
+              if ($(this).hasClass('video')) {
+                console.log('video');
+               
+                $.each($('.media-player'), function(index, val) {
+                  var parentDiv = $(this).parent('div'),
+                  parentDivID = parentDiv.attr('id');
                 });
-           }else{
-            //remove
-            // this template gots to go
-           };
-      //build it
+
+                $.each(devices, function(index, val) {
+                  var source = modules.content[contentNUM].poster,
+                  video = modules.content[contentNUM].media,
+                  approved = res.devices[val].freindlyName,
+                  device = $('.'+ approved);
+                  console.log('approved', approved); 
+                  //still need to query permissions.
+                  device.closest($('.media-player')).empty();
+                  modules.videoPlayerID = randomString();
+                  device.closest($('.media-player')).append('<video id="player-'+ modules.videoPlayerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
+                 $('#player-'+ modules.videoPlayerID).width(device.width());
+                  
+                  Vussion.vidplayer = videojs('#player-' + modules.videoPlayerID);
+                  Vussion.videoChange(Vussion.state.current.video); // update the apps!
+
+                  Vussion.vidplayer.src(video).play(function  () {
+                     console.log('play');
+                   })
+                   .on('ended', function(){ 
+                   var cleanCallback = function(){
+                    console.log('callback');
+                   }; 
+                   Vussion.cleanupGarbage(cleanCallback);// shows over, go home
+                   $('video').remove();
+                   $('.media-player').append('<img class="background" src="'+ background +'" />');
+                   });
+                });
+                 // Vussion.state.current.video = $(this).attr("href");
+                // console.log(Vussion.state.current.video);
+                //Vussion.videoChange(Vussion.state.current.video);
+                //fade to default module slide when video ends
+
+              }else if($(this).hasClass('slides')){
+              console.log('slides');
+              //build list of modules
+              var htmlList = Vussion.compileTemplate("#item-list", modules),
+              $listing = $('.video-listing');
+              $($listing).html(htmlList).promise().done();
+        
+              // bind all slides
+              //navigation for modules
+              $("#video-selector a").click(function(e){
+                e.preventDefault();
+                console.log($(this));
+                $.each(devices, function(index, val) {
+                  var source = modules.content[contentNUM].poster,
+                  video = modules.content[contentNUM].media,
+                  approved = res.devices[val].freindlyName,
+                  device = $('.'+ approved);
+                  console.log('approved', approved, device); 
+                  //still need to query permissions.
+                  device.closest($('.media-player')).attr('src', video);
+
+                  device.closest($('.media-player')).append('<img src="'+ video  +'"/>');
+                 
+                });
+
+              });
+              }else if($(this).hasClass('html')){
+              console.log('html');
+              //build list of modules
+              var htmlList = Vussion.compileTemplate("#item-list", modules),
+              $listing = $('.video-listing');
+              $($listing).html(htmlList).promise().done();
+              }else{
+                console.log('wtf are you?');
+              }
+               
+              });
+          
     }
-  };  
+};
