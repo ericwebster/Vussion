@@ -60,4 +60,4 @@ gulp.task('develop', function () {
 })
 
 // Default Task
-gulp.task('default', [/*'lint',*/ 'sass', 'scripts', 'watch','develop']);
+gulp.task('default', [/*'lint', 'sass',*/ 'scripts', 'watch','develop']);

@@ -17,7 +17,7 @@
     },
     state:{
       current:{
-        section: 'loading',
+        modules: 'loading',
         slide: 0
       }
     },
@@ -50,25 +50,28 @@
 
         //this should trigger a current state emit from the server
         Vussion.socket.on('current state', function(res){
+          
           Vussion.debugLog("socket.on >> loading current state");
-          Vussion.debugLog(res);
+          Vussion.debugLog('from here', res);
           Vussion.state.current = res;
-          Vussion.changeSection(res.section); 
+          resID = Vussion.state.current.moduleID;
+          console.log(resID);
+          Vussion.changeSection(res.modules, resID); //DC
         })
 
 
-        //this is the main section change update, possibly rename todo:
+        //this is the main modules change update, possibly rename todo:
         Vussion.socket.on('update', function(res){
           Vussion.debugLog("socket.on >> update")
-
-          if(res.section.id != Vussion.state.current.section.id){
-            //section has changed
-            Vussion.debugLog("socket.on >> section change");
+            console.log('res id', res.modules.id, 'current', Vussion.state.current.modules.id);
+          if(res.modules.id != Vussion.state.current.id){
+            //modules has changed
+            Vussion.debugLog("socket.on >> modules change");
             Vussion.debugLog(res);
 
             Vussion.state.current = res;
             Vussion.cleanupGarbage(function(){
-              Vussion.changeSection(res.section);
+              Vussion.changeSection(res.modules);
             });
           }
 
@@ -126,7 +129,7 @@
     writeSettingsToLocalStorage: function(){
       Vussion.debugLog("write to local storage");
       window.localStorage.setItem('settings', JSON.stringify(Vussion.settings));
-      window.reload();
+      location.reload( true ); 
     },
     getSettingsFromLocalStorage: function(){
       Vussion.debugLog("read from local storage");
@@ -171,27 +174,27 @@
       $("section .content").remove();
       callback();
     },
-    changeSection: function(section){
-      //requires Vussion.state.current.section to be updated
-      console.log(section);
+    changeSection: function(modules, resID){
+      //requires Vussion.state.current.modules to be updated
+      console.log(modules , resID);
       $("section").removeClass("active");
-
-      switch (section.type) {
-        case "slider":
+      console.log(modules.content[resID]);
+      switch (modules.content[resID].type) {
+        case "slides":
           // when an admin changes the section === "slider"
-          var sectionEl = $("section#" + section.type);
-          $(sectionEl).html(Vussion.compileTemplate("#slide-template", section)).promise().done(function(){
+          var sectionEl = $("section#" + modules.content[resID].type);
+          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID])).promise().done(function(){
             Vussion.slider = $("#slider-template");
 
-            $("section#" + section.type).addClass("active");
+            $("section#" + modules.content[resID].type).addClass("active");
             
             $("#slider-container").superslides({
               play: 0
             }); 
 
-            if(Vussion.state.current.slide){
-              Vussion.changeSlide(Vussion.state.current.slide);
-            }
+            // if(Vussion.state.current.slide){
+            //   Vussion.changeSlide(Vussion.state.current.slide);
+            // }
             
           })
           break;
@@ -214,18 +217,20 @@
           break;
 
         case "video":
-          var sectionEl = $("section#" + section.type);
-          section.videoPlayerID = randomString();
-          console.log("random player id " + section.videoPlayerID);
-          var html = Vussion.compileTemplate("#video-template", section);
+          var sectionEl = $("section#" + modules.type);
+          modules.videoPlayerID = randomString();
+          console.log("random player id " + modules.videoPlayerID);
+          console.log("modules type video? " + modules.type);
+          var html = Vussion.compileTemplate("#video-template", modules);
           $(sectionEl).html(html).promise().done(function(){
-            $("section#" + section.type).addClass("active");
-            Vussion.vidplayer = videojs("#player-" + section.videoPlayerID, {
+            $("section#" + modules.type).addClass("active");
+            Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID, {
               "controls": false,
               "poster": "http://www.placehold.it/2048x1536.jpg"
             });
             console.log(Vussion.vidplayer);
-          })
+          });
+          Vussion.vidplayer.play();
           break;
 
         default:

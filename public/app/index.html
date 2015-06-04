@@ -69,7 +69,7 @@
           </div>
         </section>
 
-        <section id="slider" class="slider-wrapper">          
+        <section id="slides" class="slider-wrapper">          
         </section>
 
         <section id="html" class="html-wrapper">
@@ -133,10 +133,10 @@
     <script id="slide-template" type="text/x-handlebars-template">
     <div class="content">
       <div id="slider-container" class="slides non-interactive">
-        <div class="slides-container">
-        {{#each slides}}
-          <img src="{{#assetPath}}{{media}}{{/assetPath}}" width="1024" height="768"/>
-        {{/each}}
+        <div class="slides-container no-bs">
+        
+          <img src="{{media}}" width="1024" height="768"/>
+        
         </div>
       </div>
     </div>

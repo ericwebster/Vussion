@@ -1,21 +1,69 @@
 var ExternalData = {
 	"client": "Athena Health",
-	"sections":[{
+	"devices":[{
+			"name":"ipad",
+			"freindlyName": "iPad",
+			"id":0
+		},{
+			"name": "Dr. Sharp iPhone",
+			"freindlyName": "sharp-iphone",
+			"id":1
+		},{
+			"name": "Terry's iPhone",
+			"freindlyName": "terry-iphone",
+			"id": 2
+		}],
+	"modules":[{
 		"name": "Loading Screen",
 		"id": "0",
-		"type": "loading"
+		"background" : "data/Sit_Slides/the-cramer-approach-sit.jpg",
+		"content":[{
+			"name":"loading",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Sit_Slides/the-cramer-approach-sit.jpg",
+			"poster":"data/Sit_Slides/the-cramer-approach-sit.jpg"
+		}]
 	},{
 		"name": "Walk In >> Big Disruptive Facts Slideshow",
 		"id": "1",
-		"type": "html",
-		"template": "html-template-walk-in"
+		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"content":[{
+			"name":"Fact One",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Big-Disruptive-Facts/01.jpg",
+			"poster":"data/Big-Disruptive-Facts/01.jpg"
+		},{
+			"name":"Fact Two",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Big-Disruptive-Facts/02.jpg",
+			"poster":"data/Big-Disruptive-Facts/02.jpg"
+		},{
+			"name":"Fact Three",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Big-Disruptive-Facts/03.jpg",
+			"poster":"data/Big-Disruptive-Facts/03.jpg"
+		},{
+			"name":"Fact Four",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Big-Disruptive-Facts/04.jpg",
+			"poster":"data/Big-Disruptive-Facts/04.jpg"
+		}]
 	},{
 		"name": "Cramer Approach >> Sit Slide",
 		"id": "2",
-		"type": "html",
-		"template": "html-template-basic",
-		"html": "<img src='data/Sit_Slides/the-cramer-approach-sit.jpg' />"
-
+		"background": "data/Sit_Slides/the-cramer-approach-sit.jpg",
+		"content":[{
+			"name":"Crame Approach Sit Slide",
+			"deviceID": [0,1,2],
+			"type":"slides",
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
+			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+		}]
 	},{
 		"name": "Athena's Story >> Sit Slide",
 		"id": "3",

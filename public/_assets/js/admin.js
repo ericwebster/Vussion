@@ -49,7 +49,14 @@
     state:{
       current:{
         modules: 'loading',
-        slide: null
+        slide: null,
+        content: [{
+          "name":"Fact One",
+          "deviceID": [0,1,2],
+          "type":"slides",
+          "media":"data/Big-Disruptive-Facts/01.jpg",
+          "poster":"data/Big-Disruptive-Facts/01.jpg"
+        }]
       }
     },
     init: function(settings){
@@ -71,6 +78,7 @@
       });
 
       console.log(Vussion.state.current);
+      console.log(Vussion.state.current.content, 'content');
       Vussion.registerHandlebarHelpers();
      
       Vussion.resetAllClients();
@@ -231,7 +239,9 @@
                 var contentNUM = $(this).closest('li').index(),
                 devices = modules.content[contentNUM].deviceID,
                 sit = modules.content[contentNUM].poster;// use for content index
-              e.preventDefault();
+                e.preventDefault();
+
+                Vussion.state.current.moduleID = contentNUM;
               //discern type of media
               if ($(this).hasClass('video')) {
                 console.log('video');
@@ -255,7 +265,7 @@
                   
                   Vussion.vidplayer = videojs('#player-' + modules.videoPlayerID);
                   Vussion.videoChange(Vussion.state.current.video); // update the apps!
-
+                  Vussion.updateClients();
                   Vussion.vidplayer.src(video).play(function  () {
                      console.log('play');
                    })
@@ -275,6 +285,7 @@
 
               }else if($(this).hasClass('slides')){
               console.log('slides');
+              Vussion.updateClients();
               //build list of modules
               var htmlList = Vussion.compileTemplate("#item-list", modules),
               $listing = $('.video-listing');
@@ -297,6 +308,8 @@
                   device.closest($('.media-player')).append('<img src="'+ video  +'"/>');
                  
                 });
+
+               Vussion.updateClients();
 
               });
               }else if($(this).hasClass('html')){
