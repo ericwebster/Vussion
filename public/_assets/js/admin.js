@@ -240,6 +240,7 @@
                 sit = modules.content[contentNUM].poster;// use for content index
 
                 Vussion.state.current.moduleID = contentNUM;
+                Vussion.updateClients();
               //discern type of media
               if ($(this).hasClass('video')) {
                 console.log('video');
@@ -305,7 +306,7 @@
 
                   console.log('img src', video, contentNUM);
                  // device.closest($('.media-player')).attr('src', video);
-                   $('#'+ approved +' .media-player').empty();//clean
+                  $('#'+ approved +' .media-player').empty();//clean
                   $('#'+ approved +' .media-player').append('<img src="'+ video  +'"/>');
                  
                 });
