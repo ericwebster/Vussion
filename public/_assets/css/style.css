@@ -120,7 +120,7 @@ hr {
 .thumbs img{
   max-width:100%;
 }
-#preview-window img {
+/*#preview-window img {
   max-width: 100%;
   width: auto;
   height: 127px;
@@ -131,7 +131,7 @@ hr {
   height: 234px;
   left: 52px;
   top: -225px;
-}
+}*/
 #preview-window #iPad img.iPad,
 #preview-window #terry-iphone img.terry-iphone,
 #preview-window #sharp-iphone img.sharp-iphone {
@@ -140,7 +140,6 @@ hr {
 #preview-window section {
   display: block;
   position: relative;
-  top: -150px;
   z-index: 0;
   width: 100%;
 }

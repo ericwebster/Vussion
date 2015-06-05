@@ -13,12 +13,17 @@
       pathToAssets: '',
       server: '192.168.1.160',
       port:'8080',
-      role:'presentation-iPad'
+      role:'iPad'
     },
     state:{
       current:{
         modules: 'loading',
-        slide: 0
+        content:{
+          type: 'default',
+          media:'/'
+        },
+        slide: 0,
+        type:'default'
       }
     },
     init: function(settings){
@@ -39,7 +44,7 @@
       this.bindEvents();
     },
     bindEvents: function(){
-      Vussion.socket.on('connect', function(){
+      Vussion.socket.on('connect', function(defaults){
 
         Vussion.debugLog("socket.on >> we're connected captain, engage");
 
@@ -54,7 +59,9 @@
           Vussion.debugLog("socket.on >> loading current state");
           Vussion.debugLog('from here', res);
           Vussion.state.current = res;
+          console.log('res resp', res);
           resID = Vussion.state.current.moduleID;
+
           console.log(resID);
           Vussion.changeSection(res.modules, resID); //DC
         })
@@ -69,29 +76,42 @@
             Vussion.debugLog("socket.on >> modules change");
             Vussion.debugLog(res);
 
-            Vussion.state.current = res;
-            Vussion.cleanupGarbage(function(){
-              Vussion.changeSection(res.modules);
-            });
+          Vussion.state.current = res;
+          console.log('res resp', res);
+          resID = Vussion.state.current.moduleID;
+
+          console.log(resID);
+          Vussion.changeSection(res.modules, resID); //DC
           }
 
         });
 
 
-        Vussion.socket.on('change slide', function(slide){
+        Vussion.socket.on('change slide', function(res){
           Vussion.debugLog("socket.on >> slide change");
-          Vussion.debugLog("new slide >> " + slide);
+          Vussion.debugLog("new slide >> " + res);
           //todo: check if current slide is the one being animated to
-          Vussion.changeSlide(slide);
+           Vussion.state.current = res;
+          console.log('res resp', res);
+          resID = Vussion.state.current.moduleID;
+
+          console.log(resID);
+          Vussion.changeSection(res.modules, resID); //DC
           
         }); 
 
 
-        Vussion.socket.on('change video', function(state){
+        Vussion.socket.on('change video', function(res){
+            console.log('res-vid-change', res);
+            // Vussion.debugLog("video change");
+            // Vussion.state.current.video = state.video;
+            // Vussion.playVideo();
+              Vussion.state.current = res;
+          console.log('res resp', res);
+          resID = Vussion.state.current.moduleID;
 
-            Vussion.debugLog("video change");
-            Vussion.state.current.video = state.video;
-            Vussion.playVideo();
+          console.log(resID);
+          Vussion.changeSection(res.modules, resID); //DC
         }); 
       })
       Vussion.socket.on('error', function(err){
@@ -108,6 +128,7 @@
         Vussion.settings.server = $("#serverAddress").val();
         Vussion.settings.port = $("#serverPort").val();
         Vussion.settings.role = $("#deviceRole").val();
+
         Vussion.writeSettingsToLocalStorage();
         return false;
       })
@@ -178,7 +199,9 @@
       //requires Vussion.state.current.modules to be updated
       console.log(modules , resID);
       $("section").removeClass("active");
-      console.log(modules.content[resID]);
+      perm = $.inArray(Vussion.settings.role, modules.content[resID].deviceID );
+      console.log(modules.content[resID].deviceID, 'id sent', perm);
+      if(perm){
       switch (modules.content[resID].type) {
         case "slides":
           // when an admin changes the section === "slider"
@@ -217,26 +240,53 @@
           break;
 
         case "video":
-          var sectionEl = $("section#" + modules.type);
+          var sectionEl = $("section#" + modules.content[resID].type);
           modules.videoPlayerID = randomString();
           console.log("random player id " + modules.videoPlayerID);
-          console.log("modules type video? " + modules.type);
+          console.log(modules);
           var html = Vussion.compileTemplate("#video-template", modules);
           $(sectionEl).html(html).promise().done(function(){
-            $("section#" + modules.type).addClass("active");
-            Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID, {
-              "controls": false,
-              "poster": "http://www.placehold.it/2048x1536.jpg"
+            $("section#" + modules.content[resID].type).addClass("active");
+            Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
+            Vussion.vidplayer.src(modules.content[resID].media).play(function(){
+              console.log('is playing');
+            })
+            .on('end', function(event) {
+              event.preventDefault();
+              console.log('done');
+              console.log('shows over');
+            $("section").removeClass('active');
+            $('section#loading').addClass('active');
+            $('#loading img').attr('src', modules.background);
             });
             console.log(Vussion.vidplayer);
-          });
-          Vussion.vidplayer.play();
+          })
           break;
 
         default:
-          Vussion.debugLog("loading default animation");
-          $("section#loading").addClass("active");
+          Vussion.debugLog("loading default slide");
+          console.log(modules);
+          // $("section#loading").addClass("active");
+          $("section#loading p").empty();
+          $("section#loading img").attr('src', modules.background );
+
+
+          var sectionEl = $("section#slides");
+          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID])).promise().done(function(){
+            Vussion.slider = $("#slider-template");
+
+            $("section#slides").addClass("active");
+            $('.slides-container img').attr('src', modules.background );
+            $("#slider-container").superslides({
+              play: 0
+            }); 
+            
+          })
           break;
+      }
+          
+      }else{
+        console.log('you dont have permissions?');
       }
     }
   };  

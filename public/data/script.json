@@ -14,17 +14,17 @@
 			"id": 2
 		}],
 	"modules":[{
-		"name": "Module 1 VIDEO",
+		"name": "Module 1 VIDEO permissions",
 		"id": "1",
 		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
 		"content":[{
-			"name":"Video 1",
+			"name":"Video 1 ipad & sharp-iphone",
 			"deviceID": [0,1],
 			"type":"video",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
-			"name":"Video 2",
+			"name":"Video 2 iPad ONLY",
 			"deviceID": [0],
 			"type":"video",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
@@ -35,7 +35,7 @@
 		"id": "2",
 		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
 		"content":[{
-			"name":"Module - video 2",
+			"name":"Module - video 2 - all",
 			"deviceID": [0,1,2],
 			"type":"video",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
@@ -44,30 +44,30 @@
 	},{
 		"name": "Module 3 SLIDES",
 		"id": "3",
-		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
+		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
 		"content":[{
 			"name":"Module 3 slide 1",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"data/Sit_Slides/athena-story-ipad-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/01.jpg",
+			"poster":"data/Big-Disruptive-Facts/01.jpg"
 		},{
 			"name":"Module 3 slide 2",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"data/Sit_Slides/live-demo-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/02.jpg",
+			"poster":"data/Big-Disruptive-Facts/02.jpg"
 		},{
 			"name":"Module 3 slide 3",
 			"deviceID": [0,1,2],
 			"type":"slides",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/03.jpg",
+			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		}]
 	},{
 		"name": "Module 4 SLIDES",
 		"id": "4",
-		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
+		"background": "data/Big-Disruptive-Facts/athena-story-ipad-sit.jpg",
 		"content":[{
 			"name":"Module 4 - slide 1",
 			"deviceID": [0,1,2],

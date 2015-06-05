@@ -48,15 +48,19 @@
     },
     state:{
       current:{
-        modules: 'loading',
-        slide: null,
-        content: [{
-          "name":"Fact One",
-          "deviceID": [0,1,2],
-          "type":"slides",
-          "media":"data/Big-Disruptive-Facts/01.jpg",
-          "poster":"data/Big-Disruptive-Facts/01.jpg"
-        }]
+        moduleID : 0,
+        modules:{
+          name: "loading",
+          id: 0,
+          background: "data/Sit_Slides/live-demo-sit.jpg",
+          content:[{
+          name:"loading",
+          deviceID: [0,1,3],
+          type:"default",
+          media:"data/Product-Presentation/iPad-1-Phone-Text.mp4",
+          poster:"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+          }]
+        }
       }
     },
     init: function(settings){
@@ -77,11 +81,18 @@
         }
       });
 
-      console.log(Vussion.state.current);
-      console.log(Vussion.state.current.content, 'content');
+      console.log(Vussion.state.current, 'current state');
+      console.log(Vussion.state.current.modules, 'content');
+
       Vussion.registerHandlebarHelpers();
      
-      Vussion.resetAllClients();
+      var defaults = Vussion.state.current.modules.content;//device settings on load
+      Vussion.resetAllClients(defaults);
+      //Vussion.displayDefaultSlide(defaults);
+//the very first if nothing has happened yet
+      Vussion.socket.on("connect", function(){
+        Vussion.displayDefaultSlide(defaults);
+      })
     },
     bindEvents: function(res){
       //switcher for section
@@ -104,21 +115,24 @@
 
       });
 
-      Vussion.socket.on("request state", function(){
-        Vussion.sendCurrentState();
+      Vussion.socket.on("request state", function(res){
+        Vussion.sendCurrentState(res);
       })
 
     },
-    displayDefaultSlide: function() {
+    displayDefaultSlide: function(defaults) {
       //update all to the module sit slide
       //TODO: set up modules and their defaults
-      Vussion.socket.emit('update', Vussion.state.current);
+      console.log('defaults', defaults);
+      Vussion.socket.emit('default', defaults);
     },
     resetAllClients: function(){
       //check if clients need to be updated
-      Vussion.socket.emit('update', Vussion.state.current);
+      
+      Vussion.socket.emit('update', Vussion.state.current.modules.content);
     },
-    sendCurrentState:function(){
+    sendCurrentState:function(res){
+      console.log('send current res', Vussion.state.current);
       Vussion.socket.emit('current state', Vussion.state.current);
     },
     sliderChange: function(slide){
@@ -180,7 +194,7 @@
         //i need a default preview for each screen built
        $('#preview-window').append('<div id="'+ fName +'" class="'+ fName +' col-sm-'+ col +'">'+
         '<h3>'+ deviceName +'</h3>'+
-        '<img class="'+ fName +'" src="../../_assets/images/'+ fName +'.png"/> <section  class="media-player">'+
+        '<section  class="media-player">'+
         '<img src="../../_assets/images/loading-icon.gif" /></section></div>'); 
       });
 
@@ -204,25 +218,9 @@
               deviceID = dev.id,
               fName = dev.freindlyName;
 
-            // var fName = res.devices[val].freindlyName, //this devices friendly name
-            // content = modules.content[0].type, // for this first piece of content
-            // sit = modules.content[0].media, //init. loading screen for that module
-            // device = $('.'+ fName),
-            // playerOptions; // grab class by friendly name
-
-            // playerOptions = { 
-            //   controls: false,
-            //   autoplay: false,
-            //   preload: "auto"
-            //   }
             $('.'+fName + ' .media-player').remove();
             $('.'+fName).append($mediaPlayerWrapper);
             
-           // device.append('<div class="'+ content +' media-player"><video poster="'+ sit +'" id="player-'+ fName +'" class="video-js vjs-default-skin"'+
-           //  'controls preload="auto" webkit-playsinline controls="false" width="" height="auto"'+
-           //  '</video></div>'); 
-            // need to find the size of the player
-           //$('video#player-'+ fName).width(device.width());
           });
 
           $('.media-player').append('<img class="background" src="'+ background +'" />');
@@ -235,7 +233,7 @@
 
             //navigation for modules
             $("#video-selector a").click(function(e){
-
+                console.log(e);
                 var contentNUM = $(this).closest('li').index(),
                 devices = modules.content[contentNUM].deviceID,
                 sit = modules.content[contentNUM].poster;// use for content index
@@ -246,24 +244,22 @@
               if ($(this).hasClass('video')) {
                 console.log('video');
                
-                $.each($('.media-player'), function(index, val) {
-                  var parentDiv = $(this).parent('div'),
-                  parentDivID = parentDiv.attr('id');
-                });
 
-                $.each(devices, function(index, val) {
+                $.each(devices, function(index, val) { //loop only devices with permissions
                   var source = modules.content[contentNUM].poster,
                   video = modules.content[contentNUM].media,
                   approved = res.devices[val].freindlyName,
                   device = $('.'+ approved);
-                  console.log('approved', approved); 
+                  console.log('approved', approved); //device permisions by classes
                   //still need to query permissions.
-                  device.closest($('.media-player')).empty();
-                  modules.videoPlayerID = randomString();
-                  device.closest($('.media-player')).append('<video id="player-'+ modules.videoPlayerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
-                 $('#player-'+ modules.videoPlayerID).width(device.width());
+                  $('#'+ approved +' .media-player').remove();//clean whats there
+                  modules.content[contentNUM].playerID = randomString(); //send random string to app
+                  device.append($mediaPlayerWrapper);
+                  $('#'+ approved +' .media-player').append('<video id="player-'+ modules.content[contentNUM].playerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
+                 $('#player-'+ modules.content[contentNUM].playerID).width(device.width());
                   
-                  Vussion.vidplayer = videojs('#player-' + modules.videoPlayerID);
+                  Vussion.vidplayer = videojs('#player-' + modules.content[contentNUM].playerID);
+                  // Vussion.state.current.video = 
                   Vussion.videoChange(Vussion.state.current.video); // update the apps!
                   Vussion.updateClients();
                   Vussion.vidplayer.src(video).play(function  () {
@@ -272,10 +268,11 @@
                    .on('ended', function(){ 
                    var cleanCallback = function(){
                     console.log('callback');
+                    $('#'+ approved +' .media-player').empty();
                    }; 
                    Vussion.cleanupGarbage(cleanCallback);// shows over, go home
-                   $('video').remove();
-                   $('.media-player').append('<img class="background" src="'+ background +'" />');
+                   
+                    $('#'+ approved +' .media-player').append('<img class="background" src="'+ background +'" />');
                    });
                 });
                  // Vussion.state.current.video = $(this).attr("href");
@@ -303,9 +300,11 @@
                   device = $('.'+ approved);
                   console.log('approved', approved, device); 
                   //still need to query permissions.
-                  device.closest($('.media-player')).attr('src', video);
 
-                  device.closest($('.media-player')).append('<img src="'+ video  +'"/>');
+                  console.log('img src', video, contentNUM);
+                 // device.closest($('.media-player')).attr('src', video);
+                   $('#'+ approved +' .media-player').empty();//clean
+                  $('#'+ approved +' .media-player').append('<img src="'+ video  +'"/>');
                  
                 });
 
