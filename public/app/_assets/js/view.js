@@ -13,7 +13,7 @@
       pathToAssets: '',
       server: '192.168.1.160',
       port:'8080',
-      role:'iPad'
+      role:0 //ipad
     },
     state:{
       current:{
@@ -199,9 +199,11 @@
       //requires Vussion.state.current.modules to be updated
       console.log(modules , resID);
       $("section").removeClass("active");
+      Vussion.settings.role = parseInt(Vussion.settings.role);
       perm = $.inArray(Vussion.settings.role, modules.content[resID].deviceID );
       console.log(modules.content[resID].deviceID, 'id sent', perm);
-      if(perm){
+      console.log(Vussion.settings);
+      if(perm  >-1){
       switch (modules.content[resID].type) {
         case "slides":
           // when an admin changes the section === "slider"
@@ -215,10 +217,6 @@
               play: 0
             }); 
 
-            // if(Vussion.state.current.slide){
-            //   Vussion.changeSlide(Vussion.state.current.slide);
-            // }
-            
           })
           break;
 

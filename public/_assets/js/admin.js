@@ -233,11 +233,11 @@
 
             //navigation for modules
             $("#video-selector a").click(function(e){
-                console.log(e);
+                e.preventDefault();
+               
                 var contentNUM = $(this).closest('li').index(),
                 devices = modules.content[contentNUM].deviceID,
                 sit = modules.content[contentNUM].poster;// use for content index
-                e.preventDefault();
 
                 Vussion.state.current.moduleID = contentNUM;
               //discern type of media
@@ -281,6 +281,8 @@
                 //fade to default module slide when video ends
 
               }else if($(this).hasClass('slides')){
+
+
               console.log('slides');
               Vussion.updateClients();
               //build list of modules
