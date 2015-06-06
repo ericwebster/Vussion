@@ -37,30 +37,30 @@
 	},{
 		"name": "athenahealth story & Intro",
 		"id": "2",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
 		"content":[{
 			"name":"PPT: athenahealth story",
 			"deviceID": [10],
 			"type":"slides",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
 		},{
 			"name":"Video of Jonathan",
 			"deviceID": [10],
 			"type":"slides",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
 		},{
 			"name":"PPT: Valley Health Intro",
 			"deviceID": [10],
 			"type":"slides",
 			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
 		}]
 	},{
 		"name": "Patient Population Management",
 		"id": "3",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/Sit_Slides/live-demo-sit.jpg",
 		"content":[{
 			"name":"Roll Video",
 			"deviceID": [10],
@@ -71,31 +71,31 @@
 			"name":"athenahealth Nerve Center Overview",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/Big-Disruptive-Facts/01.jpg",
-			"poster":"data/Big-Disruptive-Facts/01.jpg"
+			"media":"data/Big-Disruptive-Facts/02.jpg",
+			"poster":"data/Big-Disruptive-Facts/02.jpg"
 		},{
 			"name":"athenahealth Population health team",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/Big-Disruptive-Facts/01.jpg",
-			"poster":"data/Big-Disruptive-Facts/01.jpg"
+			"media":"data/Big-Disruptive-Facts/03.jpg",
+			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		},{
 			"name":"Valley Health Professionals",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/Big-Disruptive-Facts/01.jpg",
-			"poster":"data/Big-Disruptive-Facts/01.jpg"
+			"media":"data/Big-Disruptive-Facts/03.jpg",
+			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		},{
 			"name":"Stills of Valley Health Professionals",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/Big-Disruptive-Facts/01.jpg",
-			"poster":"data/Big-Disruptive-Facts/01.jpg"
+			"media":"data/Big-Disruptive-Facts/03.jpg",
+			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		}]
 	},{
 		"name": "Patient Engagement",
 		"id": "4",
-		"background": "data/Big-Disruptive-Facts/athena-story-ipad-sit.jpg",
+		"background": "data/Sit_Slides/product-pres-sit.jpg",
 		"content":[{
 			"name":"Roll Patient Engagement Video 1",
 			"deviceID": [10],

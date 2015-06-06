@@ -234,6 +234,10 @@
       var devices = modules.content[defaultVarObj.contentNUM].deviceID,
       contentNUM = defaultVarObj.contentNUM,
       $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
+
+      if (devices == 10) { // our global permission trump number
+        return false;
+      };
       
       $.each(devices, function(index, val) { //loop only devices with permissions
         
@@ -242,12 +246,12 @@
         approved = res.devices[val].freindlyName,
         device = $('.'+ approved);
 
-        console.log('src', video); //device permisions by classes
+        console.log('src', video); 
 
         $('#'+ approved +' .media-player').remove();//clean whats there
 
         modules.content[contentNUM].playerID = randomString(); //send random string to app
-        
+        Vussion.updateClients();// here? please check
         //build
         device.append($mediaPlayerWrapper);
         $('#'+ approved +' .media-player').append('<video id="player-'+ modules.content[contentNUM].playerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
@@ -274,6 +278,35 @@
 
       }); 
     },
+    slide: function (defaultVarObj, modules, res){
+      var devices = modules.content[defaultVarObj.contentNUM].deviceID,
+      contentNUM = defaultVarObj.contentNUM,
+      $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
+
+      Vussion.updateClients();//global update //looks OUT OF PLACE
+      console.log(devices, 'slide devices');
+
+      if (devices == 10) { // our global permission trump number
+        return false;
+      };
+
+      $.each(devices, function(index, val) {
+        var source = modules.content[contentNUM].poster,
+        video = modules.content[contentNUM].media,
+        approved = res.devices[val].freindlyName,
+        device = $('.'+ approved);
+        console.log('approved', approved, device); 
+        //still need to query permissions.
+
+        console.log('img src', video, contentNUM);
+       // device.closest($('.media-player')).attr('src', video);
+        $('#'+ approved +' .media-player').empty();//clean
+        $('#'+ approved +' .media-player').append('<img src="'+ video  +'"/>');
+       
+      });
+
+      Vussion.updateClients(); //redundant
+    },
     moduleSubNav: function(defaultVarObj, modules, res){
     //navigation for modules
       $("#video-selector a").click(function(e){
@@ -287,6 +320,7 @@
         defaultVarObj.contentNUM = $(this).closest('li').index();//used to GET content index
 
         Vussion.state.current.moduleID = contentNUM; //add param for the app
+
         Vussion.updateClients();
         //discern type of media
         if ($(this).hasClass('video')) {
@@ -294,53 +328,24 @@
           
           //video handler
           Vussion.videoPlayer(defaultVarObj, modules, res);     
-
-
-              }else if($(this).hasClass('slides')){
-
-              console.log('slides');
-              Vussion.updateClients();
-
-              //build list of modules
-              var htmlList = Vussion.compileTemplate("#item-list", modules),
-              $listing = $('.video-listing');
-              $($listing).html(htmlList).promise().done();
         
-              // bind all slides
-              //navigation for modules
-              $("#video-selector a").click(function(e){
-                e.preventDefault();
-                console.log($(this));
+        }else if($(this).hasClass('slides')){
 
-                $.each(devices, function(index, val) {
-                  var source = modules.content[contentNUM].poster,
-                  video = modules.content[contentNUM].media,
-                  approved = res.devices[val].freindlyName,
-                  device = $('.'+ approved);
-                  console.log('approved', approved, device); 
-                  //still need to query permissions.
-
-                  console.log('img src', video, contentNUM);
-                 // device.closest($('.media-player')).attr('src', video);
-                  $('#'+ approved +' .media-player').empty();//clean
-                  $('#'+ approved +' .media-player').append('<img src="'+ video  +'"/>');
-                 
-                });
-
-               Vussion.updateClients();
-
-              });
-              }else if($(this).hasClass('html')){
-              console.log('html');
-              //build list of modules
-              var htmlList = Vussion.compileTemplate("#item-list", modules),
-              $listing = $('.video-listing');
-              $($listing).html(htmlList).promise().done();
-              }else{
-                console.log('wtf are you?');
-              }
+        console.log('slides');
+        //slide [individual] handler
+        Vussion.slide(defaultVarObj, modules, res);   
+          
+        }else if($(this).hasClass('html')){
+        console.log('html');
+        //build list of modules
+        var htmlList = Vussion.compileTemplate("#item-list", modules),
+        $listing = $('.video-listing');
+        $($listing).html(htmlList).promise().done();
+        }else{
+          console.log('wtf are you?');
+        }
                
-              });
+      });
     },
     mediaPlayer: function(modules, res){
       var $mediaPlayerWrapper = '<section class="media-player"></section>';
