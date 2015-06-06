@@ -6,12 +6,16 @@
 			"id":0
 		},{
 			"name": "Dr. Addison ph iPhone",
-			"freindlyName": "sharp-iphone",
+			"freindlyName": "addison-iphone",
 			"id":1
 		},{
 			"name": "Terry's iPhone",
 			"freindlyName": "terry-iphone",
 			"id": 2
+		},{
+			"name": "Dr Sharp's iPhone",
+			"freindlyName": "sharp-iphone",
+			"id": 3
 		}],
 	"modules":[{
 		"name": "Walk In: Disruptive Facts",

@@ -228,8 +228,14 @@
           //build list of modules
             var htmlList = Vussion.compileTemplate("#item-list", modules),
               $listing = $('.video-listing');
-              $($listing).html(htmlList).promise().done();
-        
+              $($listing).html(htmlList).promise().done(function(){
+                //update listing for slide templates
+                $.each($('.play-button.slides'), function(index, val) {
+                   //update the play button for all slide types
+                   $(this).html('add to slider');
+                });  
+              });
+
 
             //navigation for modules
             $("#video-selector a").click(function(e){
@@ -283,9 +289,9 @@
 
               }else if($(this).hasClass('slides')){
 
-
               console.log('slides');
               Vussion.updateClients();
+
               //build list of modules
               var htmlList = Vussion.compileTemplate("#item-list", modules),
               $listing = $('.video-listing');
@@ -296,6 +302,7 @@
               $("#video-selector a").click(function(e){
                 e.preventDefault();
                 console.log($(this));
+
                 $.each(devices, function(index, val) {
                   var source = modules.content[contentNUM].poster,
                   video = modules.content[contentNUM].media,
