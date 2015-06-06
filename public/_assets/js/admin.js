@@ -229,84 +229,72 @@
         //unexpected// clicking re-renders hbs. 
       });
     },
-    mediaPlayer: function(modules, res){
-      var $mediaPlayerWrapper = '<section class="media-player"></section>';
-      $("section").removeClass("active");  
+    videoPlayer: function (defaultVarObj, modules, res){
+
+      var devices = modules.content[defaultVarObj.contentNUM].deviceID,
+      contentNUM = defaultVarObj.contentNUM,
+      $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
       
-        //vars for all types
-        var name = modules.name, //convert to obj
-        id = modules.id,
-        background = modules.background,
-        content = modules.content,
-        devices = res.devices; //use as default
+      $.each(devices, function(index, val) { //loop only devices with permissions
+        
+        var source = modules.content[contentNUM].poster,
+        video = modules.content[contentNUM].media,
+        approved = res.devices[val].freindlyName,
+        device = $('.'+ approved);
 
-        defaultVarObj = { //for cleanup
-          name : modules.name,
-          id : modules.id,
-          background : modules.background,
-          content : modules.content,
-          devices : res.devices
-        }
+        console.log('src', video); //device permisions by classes
 
-        //unecessary cleanup?
-        //$('video').remove();
+        $('#'+ approved +' .media-player').remove();//clean whats there
 
-        Vussion.loadDevices(defaultVarObj); //reset the background for each device
+        modules.content[contentNUM].playerID = randomString(); //send random string to app
+        
+        //build
+        device.append($mediaPlayerWrapper);
+        $('#'+ approved +' .media-player').append('<video id="player-'+ modules.content[contentNUM].playerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
+        $('#player-'+ modules.content[contentNUM].playerID).width(device.width());
+        
+        Vussion.vidplayer = videojs('#player-' + modules.content[contentNUM].playerID);
+         
+        Vussion.videoChange(Vussion.state.current.video); // update the apps! -TO DELETE
+        Vussion.updateClients();// new global update
+        
+        Vussion.vidplayer.src(video).play(function  () {
+           console.log('play');
+         })
+         .on('ended', function(){ 
+         var cleanCallback = function(){
+          console.log('callback');
+          $('#'+ approved +' .media-player').empty();
+        }; 
+        Vussion.cleanupGarbage(cleanCallback);// shows over, go home
+         
+        $('#'+ approved +' .media-player').append('<img class="background" src="'+ background +'" />');
 
-        Vussion.buildModuleNav(defaultVarObj, modules);//build navigation for this module selected
+        });
 
+      }); 
+    },
+    moduleSubNav: function(defaultVarObj, modules, res){
+    //navigation for modules
+      $("#video-selector a").click(function(e){
+        e.preventDefault();
+               
+        var contentNUM = $(this).closest('li').index(),//used to GET content index
+        devices = modules.content[contentNUM].deviceID,
+        sit = modules.content[contentNUM].poster;
+
+        //globalobj needs update
+        defaultVarObj.contentNUM = $(this).closest('li').index();//used to GET content index
+
+        Vussion.state.current.moduleID = contentNUM; //add param for the app
+        Vussion.updateClients();
+        //discern type of media
+        if ($(this).hasClass('video')) {
+          console.log('video');
           
+          //video handler
+          Vussion.videoPlayer(defaultVarObj, modules, res);     
 
-
-            //navigation for modules
-            $("#video-selector a").click(function(e){
-                e.preventDefault();
-               
-                var contentNUM = $(this).closest('li').index(),
-                devices = modules.content[contentNUM].deviceID,
-                sit = modules.content[contentNUM].poster;// use for content index
-
-                Vussion.state.current.moduleID = contentNUM;
-                Vussion.updateClients();
-              //discern type of media
-              if ($(this).hasClass('video')) {
-                console.log('video');
-               
-
-                $.each(devices, function(index, val) { //loop only devices with permissions
-                  var source = modules.content[contentNUM].poster,
-                  video = modules.content[contentNUM].media,
-                  approved = res.devices[val].freindlyName,
-                  device = $('.'+ approved);
-                  console.log('approved', approved); //device permisions by classes
-                  //still need to query permissions.
-                  $('#'+ approved +' .media-player').remove();//clean whats there
-                  modules.content[contentNUM].playerID = randomString(); //send random string to app
-                  device.append($mediaPlayerWrapper);
-                  $('#'+ approved +' .media-player').append('<video id="player-'+ modules.content[contentNUM].playerID +'" poster="'+ source +'" class="video-js vjs-default-skin" preload="auto"> </video>');
-                 $('#player-'+ modules.content[contentNUM].playerID).width(device.width());
-                  
-                  Vussion.vidplayer = videojs('#player-' + modules.content[contentNUM].playerID);
-                  // Vussion.state.current.video = 
-                  Vussion.videoChange(Vussion.state.current.video); // update the apps!
-                  Vussion.updateClients();
-                  Vussion.vidplayer.src(video).play(function  () {
-                     console.log('play');
-                   })
-                   .on('ended', function(){ 
-                   var cleanCallback = function(){
-                    console.log('callback');
-                    $('#'+ approved +' .media-player').empty();
-                   }; 
-                   Vussion.cleanupGarbage(cleanCallback);// shows over, go home
-                   
-                    $('#'+ approved +' .media-player').append('<img class="background" src="'+ background +'" />');
-                   });
-                });
-                 // Vussion.state.current.video = $(this).attr("href");
-                // console.log(Vussion.state.current.video);
-                //Vussion.videoChange(Vussion.state.current.video);
-                //fade to default module slide when video ends
 
               }else if($(this).hasClass('slides')){
 
@@ -353,6 +341,34 @@
               }
                
               });
-          
+    },
+    mediaPlayer: function(modules, res){
+      var $mediaPlayerWrapper = '<section class="media-player"></section>';
+      $("section").removeClass("active");  
+      
+        //vars for all types
+        var name = modules.name, //convert to obj
+        id = modules.id,
+        background = modules.background,
+        content = modules.content,
+        devices = res.devices; //use as default
+
+        defaultVarObj = { //for cleanup
+          name : modules.name,
+          id : modules.id,
+          background : modules.background,
+          content : modules.content,
+          devices : res.devices
+        }
+       ;
+
+        //unecessary cleanup?
+        //$('video').remove();
+
+        Vussion.loadDevices(defaultVarObj); //reset the background for each device
+
+        Vussion.buildModuleNav(defaultVarObj, modules);//build navigation for this module selected
+
+        Vussion.moduleSubNav(defaultVarObj, modules, res);// scroll nav for slides and video  
     }
 };

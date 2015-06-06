@@ -152,19 +152,19 @@
 		"content":[{
 			"name":"Roll Front Office Productivity video",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Terry walking away from Dr. Sharp's office",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Terry checking in with admin",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
@@ -181,19 +181,19 @@
 		"content":[{
 			"name":"Stills of patient encounter",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Live Demo: Encounter Workflow",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Live Demo: Direct Scheduling MRI",
 			"deviceID": [10],
-			"type":"slide",
+			"type":"slides",
 			"media":"/",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
