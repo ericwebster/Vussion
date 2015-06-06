@@ -89,7 +89,7 @@
       var defaults = Vussion.state.current.modules.content;//device settings on load
       Vussion.resetAllClients(defaults);
       //Vussion.displayDefaultSlide(defaults);
-//the very first if nothing has happened yet
+      //the very first if nothing has happened yet
       Vussion.socket.on("connect", function(){
         Vussion.displayDefaultSlide(defaults);
       })
@@ -105,8 +105,8 @@
           if(el.id === Vussion.state.current.sectionID){
             Vussion.state.current.modules = el;
             Vussion.cleanupGarbage(function(){
-              Vussion.changeSection(el);  //TO REMOVE
-              Vussion.mediaPlayer(el, res);  
+              // Vussion.changeSection(el);  //TO REMOVE
+              Vussion.mediaHandler(el, res);  
             });
             
             return false;
@@ -122,13 +122,11 @@
     },
     displayDefaultSlide: function(defaults) {
       //update all to the module sit slide
-      //TODO: set up modules and their defaults
       console.log('defaults', defaults);
       Vussion.socket.emit('default', defaults);
     },
     resetAllClients: function(){
       //check if clients need to be updated
-      
       Vussion.socket.emit('update', Vussion.state.current.modules.content);
     },
     sendCurrentState:function(res){
@@ -216,6 +214,10 @@
       $('.media-player').append('<img class="background" src="'+ defaultVarObj.background +'" />');
 
     },
+    buildSlider: function(defaultVarObj, modules){
+      // $('#video-selector').attr('id','slide-list');
+
+    },
     buildModuleNav: function(defaultVarObj, modules){
     //build list of modules
     var htmlList = Vussion.compileTemplate("#item-list", modules),
@@ -225,8 +227,13 @@
         $.each($('.play-button.slides'), function(index, val) {
            //update the play button for all slide types
            $(this).html('add to slider');
+           Vussion.buildSlider(defaultVarObj, modules);
+
+           //added to library ui
+           $(this).on('click', function(event) {
+             $(this).html('added to slider!');
+           });
         }); 
-        //unexpected// clicking re-renders hbs. 
       });
     },
     videoPlayer: function (defaultVarObj, modules, res){
@@ -283,12 +290,16 @@
       contentNUM = defaultVarObj.contentNUM,
       $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
 
+      console.log('slideAR',defaultVarObj.slides);   
+
       Vussion.updateClients();//global update //looks OUT OF PLACE
       console.log(devices, 'slide devices');
 
       if (devices == 10) { // our global permission trump number
         return false;
       };
+
+      //build first slide
 
       $.each(devices, function(index, val) {
         var source = modules.content[contentNUM].poster,
@@ -309,6 +320,7 @@
     },
     moduleSubNav: function(defaultVarObj, modules, res){
     //navigation for modules
+    defaultVarObj.slides = [];// new array for each subnav
       $("#video-selector a").click(function(e){
         e.preventDefault();
                
@@ -330,11 +342,14 @@
           Vussion.videoPlayer(defaultVarObj, modules, res);     
         
         }else if($(this).hasClass('slides')){
-
         console.log('slides');
-        //slide [individual] handler
-        Vussion.slide(defaultVarObj, modules, res);   
-          
+
+        //let's collect clicks // build slide library
+        defaultVarObj.slides.push(sit);
+        
+        //slide [individual] handler init
+        Vussion.slide(defaultVarObj, modules, res);
+
         }else if($(this).hasClass('html')){
         console.log('html');
         //build list of modules
@@ -347,16 +362,9 @@
                
       });
     },
-    mediaPlayer: function(modules, res){
+    mediaHandler: function(modules, res){
       var $mediaPlayerWrapper = '<section class="media-player"></section>';
       $("section").removeClass("active");  
-      
-        //vars for all types
-        var name = modules.name, //convert to obj
-        id = modules.id,
-        background = modules.background,
-        content = modules.content,
-        devices = res.devices; //use as default
 
         defaultVarObj = { //for cleanup
           name : modules.name,
@@ -364,11 +372,7 @@
           background : modules.background,
           content : modules.content,
           devices : res.devices
-        }
-       ;
-
-        //unecessary cleanup?
-        //$('video').remove();
+        };
 
         Vussion.loadDevices(defaultVarObj); //reset the background for each device
 
