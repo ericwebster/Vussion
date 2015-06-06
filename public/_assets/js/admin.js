@@ -199,42 +199,63 @@
       });
 
     },
+    loadDevices: function (defaultVarObj){
+
+      var $mediaPlayerWrapper = '<section class="media-player"></section>';
+
+      $.each(defaultVarObj.devices, function(i, dev) { // for all devices by default
+        var fName = dev.freindlyName;
+
+        //adding each default sit slide to the preview area
+        $('.'+fName + ' .media-player').remove();
+        $('.'+fName).append($mediaPlayerWrapper); 
+        
+      });
+
+      //all media players created need their background img
+      $('.media-player').append('<img class="background" src="'+ defaultVarObj.background +'" />');
+
+    },
+    buildModuleNav: function(defaultVarObj, modules){
+    //build list of modules
+    var htmlList = Vussion.compileTemplate("#item-list", modules),
+      $listing = $('.video-listing');
+      $($listing).html(htmlList).promise().done(function(){
+        //update listing for slide templates
+        $.each($('.play-button.slides'), function(index, val) {
+           //update the play button for all slide types
+           $(this).html('add to slider');
+        }); 
+        //unexpected// clicking re-renders hbs. 
+      });
+    },
     mediaPlayer: function(modules, res){
       var $mediaPlayerWrapper = '<section class="media-player"></section>';
       $("section").removeClass("active");  
       
-        //iterate through model
-        var name = modules.name,
+        //vars for all types
+        var name = modules.name, //convert to obj
         id = modules.id,
         background = modules.background,
         content = modules.content,
         devices = res.devices; //use as default
 
+        defaultVarObj = { //for cleanup
+          name : modules.name,
+          id : modules.id,
+          background : modules.background,
+          content : modules.content,
+          devices : res.devices
+        }
+
         //unecessary cleanup?
-        $('video').remove();
+        //$('video').remove();
 
-          $.each(devices, function(i, dev) { // for all devices by default
-             var deviceName = dev.name,
-              deviceID = dev.id,
-              fName = dev.freindlyName;
+        Vussion.loadDevices(defaultVarObj); //reset the background for each device
 
-            $('.'+fName + ' .media-player').remove();
-            $('.'+fName).append($mediaPlayerWrapper);
-            
-          });
+        Vussion.buildModuleNav(defaultVarObj, modules);//build navigation for this module selected
 
-          $('.media-player').append('<img class="background" src="'+ background +'" />');
-
-          //build list of modules
-            var htmlList = Vussion.compileTemplate("#item-list", modules),
-              $listing = $('.video-listing');
-              $($listing).html(htmlList).promise().done(function(){
-                //update listing for slide templates
-                $.each($('.play-button.slides'), function(index, val) {
-                   //update the play button for all slide types
-                   $(this).html('add to slider');
-                });  
-              });
+          
 
 
             //navigation for modules
