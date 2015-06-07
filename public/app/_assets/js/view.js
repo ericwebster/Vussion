@@ -213,15 +213,7 @@
 
           //check for slide array/ if it exists, we need a new template
           console.log('from slides', modules);
-          if (modules.slidesArr.length > 1) {
-           $("#slider-template img").remove(); //clean what was there
-           //new array to step through
-           $.each(modules.slidesArr, function(index, val) {
-             $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
-           });
-          }else{
-
-            $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID]))
+          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID]))
             .promise()
             .done(function(){
 
@@ -233,7 +225,14 @@
                 play: 0
               }); 
 
-            })
+            });
+
+          if (modules.slidesArr.length > 1) {
+           $("#slider-template img").remove(); //clean what was there
+           //new array to step through
+           $.each(modules.slidesArr, function(index, val) {
+             $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
+           });
           }
           break;
 
@@ -302,6 +301,22 @@
           
       }else{
         console.log('you dont have permissions?');
+        Vussion.debugLog("loading parent module slide");
+          
+          $("section#loading p").empty();
+          $("section#loading img").attr('src', modules.background );
+
+          var sectionEl = $("section#slides");
+          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID])).promise().done(function(){
+            Vussion.slider = $("#slider-template");
+
+            $("section#slides").addClass("active");
+            $('.slides-container img').attr('src', modules.background );
+            $("#slider-container").superslides({
+              play: 0
+            }); 
+            
+          })
       }
     }
   };  

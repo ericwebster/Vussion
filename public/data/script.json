@@ -25,14 +25,14 @@
 			"name":"PPT: Key Facts",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/2.9-days-turnaround.jpg",
+			"poster":"data/Big-Disruptive-Facts/2.9-days-turnaround.jpg"
 		},{
 			"name":"Walk In Music",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/32-average-reduction.jpg",
+			"poster":"data/Big-Disruptive-Facts/32-average-reduction.jpg"
 		}]
 	},{
 		"name": "athenahealth story & Intro",
@@ -42,20 +42,20 @@
 			"name":"PPT: athenahealth story",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/32-average-reduction.jpg",
+			"poster":"data/Big-Disruptive-Facts/32-average-reduction.jpg"
 		},{
 			"name":"Video of Jonathan",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/6-average-collections.jpg",
+			"poster":"data/Big-Disruptive-Facts/6-average-collections.jpg"
 		},{
 			"name":"PPT: Valley Health Intro",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
-			"poster":"data/Sit_Slides/athena-story-ipad-sit.jpg"
+			"media":"data/Big-Disruptive-Facts/8-fewer-no.jpg",
+			"poster":"data/Big-Disruptive-Facts/8-fewer-no.jpg"
 		}]
 	},{
 		"name": "Patient Population Management",
@@ -112,7 +112,7 @@
 			"name":"Terry recieves reminder text",
 			"deviceID": [2],
 			"type":"video",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Terry Walks inside",
@@ -142,7 +142,7 @@
 			"name":"Terry logs onto patient portal",
 			"deviceID": [0],
 			"type":"video",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
@@ -171,7 +171,7 @@
 			"name":"Terry making co-pay on kiosk",
 			"deviceID": [10],
 			"type":"video",
-			"media":"/",
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
@@ -245,7 +245,7 @@
 			"name":"Demo: athena Secure Text Demo",
 			"deviceID": [3],
 			"type":"video",
-			"media":"/",
+			"media":"data/Product-Presentation/iPad-1-Phone-Text.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
