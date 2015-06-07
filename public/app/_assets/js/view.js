@@ -145,7 +145,9 @@
     },
     changeSlide: function(num){
       Vussion.debugLog("change slide");
-      $("#slider-container").superslides('animate', num);
+      $("#slider-container").superslides({
+        play: 5000
+      }); 
     },
     writeSettingsToLocalStorage: function(){
       Vussion.debugLog("write to local storage");
@@ -220,10 +222,6 @@
               Vussion.slider = $("#slider-template");
 
               $("section#" + modules.content[resID].type).addClass("active");
-              
-              $("#slider-container").superslides({
-                play: 0
-              }); 
 
             });
 
@@ -233,6 +231,7 @@
            $.each(modules.slidesArr, function(index, val) {
              $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
            });
+           Vussion.changeSlide();
           }
           break;
 
