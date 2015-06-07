@@ -230,8 +230,23 @@
            Vussion.buildSlider(defaultVarObj, modules);
 
            //added to library ui
-           $(this).on('click', function(event) {
-             $(this).html('added to slider!');
+           $(this).closest('li').on('click', function(event) {
+            if ($(this).closest('li').hasClass('added')) {
+              $(this).closest('li')
+              .removeClass('added')
+              .addClass('removed')
+              .css('background', '#fff');
+
+              $(this).find('.play-button').html('removed from slider')
+              .css('color','#bccc9e');
+
+            }else{
+              $(this).find('.play-button').html('added to slider!')
+              .css('color','#fff');
+              $(this).closest('li')
+              .css('background', '#E3F3C4')
+              .addClass('added');
+             }
            });
         }); 
       });
@@ -290,7 +305,7 @@
       contentNUM = defaultVarObj.contentNUM,
       $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
 
-      console.log('slideAR',defaultVarObj.slides);   
+      console.log('slideArr',modules.slidesArr);   
 
       Vussion.updateClients();//global update //looks OUT OF PLACE
       console.log(devices, 'slide devices');
@@ -320,37 +335,44 @@
     },
     moduleSubNav: function(defaultVarObj, modules, res){
     //navigation for modules
-    defaultVarObj.slides = [];// new array for each subnav
-      $("#video-selector a").click(function(e){
+    modules.slidesArr = [];// new array for each subnav
+
+      $("#video-selector li").click(function(e){
         e.preventDefault();
                
-        var contentNUM = $(this).closest('li').index(),//used to GET content index
+        var contentNUM = $(this).index(),//used to GET content index
         devices = modules.content[contentNUM].deviceID,
         sit = modules.content[contentNUM].poster;
 
         //globalobj needs update
-        defaultVarObj.contentNUM = $(this).closest('li').index();//used to GET content index
+        defaultVarObj.contentNUM = $(this).index();//used to GET content index
 
         Vussion.state.current.moduleID = contentNUM; //add param for the app
 
         Vussion.updateClients();
         //discern type of media
-        if ($(this).hasClass('video')) {
+        if ($(this).find('a').hasClass('video')) {
           console.log('video');
           
           //video handler
           Vussion.videoPlayer(defaultVarObj, modules, res);     
         
-        }else if($(this).hasClass('slides')){
+        }else if($(this).find('a').hasClass('slides')){
         console.log('slides');
 
+        //check if slide is there
+        console.log(sit, "sit", modules.slidesArr, 'in');
+        perm = $.inArray(sit, modules.slidesArr );
+        console.log(perm);
+        if(perm  <= -1){
         //let's collect clicks // build slide library
-        defaultVarObj.slides.push(sit);
-        
+          modules.slidesArr.push(sit);
+        }
+
         //slide [individual] handler init
         Vussion.slide(defaultVarObj, modules, res);
 
-        }else if($(this).hasClass('html')){
+        }else if($(this).find('a').hasClass('html')){
         console.log('html');
         //build list of modules
         var htmlList = Vussion.compileTemplate("#item-list", modules),
