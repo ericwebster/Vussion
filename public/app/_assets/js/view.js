@@ -222,7 +222,7 @@
               Vussion.slider = $("#slider-template");
 
               $("section#" + modules.content[resID].type).addClass("active");
-
+                $('#slides .slides-container').css('display','block'); 
             });
 
           if (modules.slidesArr.length == 1) {
