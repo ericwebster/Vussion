@@ -215,7 +215,7 @@
 
           //check for slide array/ if it exists, we need a new template
           console.log('from slides', modules);
-          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules.content[resID]))
+          $(sectionEl).html(Vussion.compileTemplate("#slide-template", modules))
             .promise()
             .done(function(){
 
@@ -225,8 +225,18 @@
 
             });
 
+          if (modules.slidesArr.length == 1) {
+            console.log('one slide');
+            $("img.parent").remove();
+            $('#slides .slides-container').css('display','block'); 
+            $.each(modules.slidesArr, function(index, val) {
+             $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
+           });
+          }
+
           if (modules.slidesArr.length > 1) {
-           $("#slider-template img").remove(); //clean what was there
+           $(".slides-container no-bs").remove(); //clean what was there
+           $("img.parent").remove();
            //new array to step through
            $.each(modules.slidesArr, function(index, val) {
              $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
@@ -261,19 +271,25 @@
           $(sectionEl).html(html).promise().done(function(){
             $("section#" + modules.content[resID].type).addClass("active");
             Vussion.vidplayer = videojs("#player-" + modules.videoPlayerID);
-            Vussion.vidplayer.src(modules.content[resID].media).play(function(){
-              console.log('is playing');
-            })
-            .on('end', function(event) {
-              event.preventDefault();
+
+                  Vussion.vidplayer.src(modules.content[resID].media).play(function  () {
+                   console.log('play');
+                 })
+                 .on('ended', function(){ 
+                 var cleanCallback = function(){
+                  console.log('callback');
+                  event.preventDefault();
               console.log('done');
               console.log('shows over');
             $("section").removeClass('active');
-            $('section#loading').addClass('active');
-            $('#loading img').attr('src', modules.background);
+            $('section#slides').addClass('active').append('<img src="" />');
+
+            $('section#slides img').attr('src', modules.background);
+                }; 
+                Vussion.cleanupGarbage(cleanCallback);// shows over, go home
+                    console.log(Vussion.vidplayer);
+                  });
             });
-            console.log(Vussion.vidplayer);
-          })
           break;
 
         default:

@@ -137,6 +137,16 @@ hr {
 #preview-window #sharp-iphone img.sharp-iphone {
   height: 397px;
 }
+#slider-container, .slides-control, #slider-container .slides-control div{  
+  height: 239px!important;
+  width: 242px!important;
+}
+
+#slider-container .slides-control div img{  
+  width: 100%!important;
+  height: 100%!important;
+}
+
 #preview-window section {
   display: block;
   position: relative;

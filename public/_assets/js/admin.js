@@ -137,6 +137,12 @@
         Vussion.state.current.slide = slide;
         Vussion.socket.emit('change slide', Vussion.state.current.slide);
     },
+    changeSlide: function(num){
+      console.log("change slide");
+      $("#slider-container").superslides({
+        play: 5000
+      }); 
+    },
     videoChange: function(video){
         Vussion.socket.emit('change video', Vussion.state.current);
     },
@@ -220,9 +226,11 @@
     },
     buildModuleNav: function(defaultVarObj, modules){
     //build list of modules
+    modules.slidesArr = [];// new array for each subnav
     var htmlList = Vussion.compileTemplate("#item-list", modules),
       $listing = $('.video-listing');
       $($listing).html(htmlList).promise().done(function(){
+        Vussion.updateClients();
         //update listing for slide templates
         $.each($('.play-button.slides'), function(index, val) {
            //update the play button for all slide types
@@ -239,7 +247,7 @@
 
               $(this).find('.play-button').html('removed from slider')
               .css('color','#bccc9e');
-
+              
             }else{
               $(this).find('.play-button').html('added to slider!')
               .css('color','#fff');
@@ -248,13 +256,17 @@
               .addClass('added');
              }
            });
+
         }); 
+
+
       });
     },
     videoPlayer: function (defaultVarObj, modules, res){
 
       var devices = modules.content[defaultVarObj.contentNUM].deviceID,
       contentNUM = defaultVarObj.contentNUM,
+      background = modules.background;
       $mediaPlayerWrapper = '<section class="media-player"></section>'; //adjust scope issue
 
       if (devices == 10) { // our global permission trump number
@@ -320,16 +332,31 @@
         var source = modules.content[contentNUM].poster,
         video = modules.content[contentNUM].media,
         approved = res.devices[val].freindlyName,
-        device = $('.'+ approved);
+        device = $('.'+ approved),
+        $deviceElId = $('#'+ approved +' .media-player');
+
         console.log('approved', approved, device); 
         //still need to query permissions.
 
         console.log('img src', video, contentNUM);
        // device.closest($('.media-player')).attr('src', video);
-        $('#'+ approved +' .media-player').empty();//clean
-        $('#'+ approved +' .media-player').append('<img src="'+ video  +'"/>');
+        $deviceElId.empty();//clean
+        $deviceElId.append('<img src="'+ video  +'"/>');
        
+      // if (modules.slidesArr.length > 1) {
+      //   $('#'+ approved +' .media-player img').remove(); //clean what was there
+      //   //need slide template
+      //   $deviceElId.append('<div class="content"><div id="slider-container" class="slides non-interactive"><div class="slides-container no-bs"></div></div></div>');
+            
+      //   //new array to step through
+      //   $.each(modules.slidesArr, function(index, val) {
+      //     $('.slides-container').append('<img src="'+ val +'" width="1024" height="768"/>'); 
+      //   });
+        
+      //    Vussion.changeSlide();
+      //   }
       });
+
 
       Vussion.updateClients(); //redundant
     },
@@ -368,6 +395,19 @@
         //let's collect clicks // build slide library
           modules.slidesArr.push(sit);
         }
+
+        //if removed
+        $('.removed').on('click', function(){
+              //okay-actually remove from slider
+              console.log('remove sit', sit);
+              for (var i=modules.slidesArr.length-1; i>=0; i--) {
+                  if (modules.slidesArr[i] == sit) {
+                      modules.slidesArr.splice(i, 1);
+                  }
+              }
+              Vussion.updateClients();//global update 
+        });
+
 
         //slide [individual] handler init
         Vussion.slide(defaultVarObj, modules, res);
