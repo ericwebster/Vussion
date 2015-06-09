@@ -20,7 +20,7 @@
 	"modules":[{
 		"name": "Walk In: Disruptive Facts",
 		"id": "1",
-		"background": "data/Sit_Slides/athena-story-ipad-sit.jpg",
+		"background":"data/ipad-sit-slides/Slide1.jpg",
 		"content":[{
 			"name":"PPT: Key Facts",
 			"deviceID": [0],
@@ -73,7 +73,7 @@
 	},{
 		"name": "athenahealth story & Intro",
 		"id": "2",
-		"background": "data/ipad-sit-slides/athena-story-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide2.jpg",
 		"content":[{
 			"name":"PPT: athenahealth story",
 			"deviceID": [10],
@@ -96,7 +96,7 @@
 	},{
 		"name": "Patient Population Management",
 		"id": "3",
-		"background": "data/Sit_Slides/live-demo-sit.jpg",
+		"background":"data/ipad-sit-slides/Slide3.jpg",
 		"content":[{
 			"name":"Roll Video",
 			"deviceID": [10],
@@ -113,13 +113,13 @@
 			"name":"athenahealth Population health team",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/videos/patient-population.m4v",
+			"media":"data/videos/portal.mp4",
 			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		},{
 			"name":"Valley Health Professionals",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/videos/patient-population.m4v",
+			"media":"data/videos/portal.mp4",
 			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		},{
 			"name":"Stills of Valley Health Professionals",
@@ -131,7 +131,7 @@
 	},{
 		"name": "Patient Engagement",
 		"id": "4",
-		"background": "data/Sit_Slides/product-pres-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide4.jpg",
 		"content":[{
 			"name":"Roll Patient Engagement Video 1",
 			"deviceID": [10],
@@ -154,7 +154,7 @@
 			"name":"Terry Walks inside",
 			"deviceID": [2],
 			"type":"slides",
-			"media":"data/videos/patient-engagement.m4v",
+			"media":"data/videos/engagement.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
 			"name":"Mobile Scheduling demo",
@@ -184,7 +184,7 @@
 	},{
 		"name": "Front Office Productivity",
 		"id": "5",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide1.jpg",
 		"content":[{
 			"name":"Roll Front Office Productivity video",
 			"deviceID": [10],
@@ -236,7 +236,7 @@
 	},{
 		"name": "Financial Clearance",
 		"id": "7",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide7.jpg",
 		"content":[{
 			"name":"Stills: athenahealth communicates to insureance...",
 			"deviceID": [10],
@@ -253,7 +253,7 @@
 	},{
 		"name": "Document Management Services",
 		"id": "8",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide8.jpg",
 		"content":[{
 			"name":"Roll Animation: Document Management Services",
 			"deviceID": [10],
@@ -264,7 +264,7 @@
 	},{
 		"name": "Network Efficiencies",
 		"id": "9",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide9.jpg",
 		"content":[{
 			"name":"Demo: Clinical Inbox Demo",
 			"deviceID": [10],
@@ -287,7 +287,7 @@
 	},{
 		"name": "Care Coordination",
 		"id": "10",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide10.jpg",
 		"content":[{
 			"name":"Demo: Coordinator portal",
 			"deviceID": [10],
@@ -298,7 +298,7 @@
 	},{
 		"name": "Unified Patient Experience",
 		"id": "11",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide11.jpg",
 		"content":[{
 			"name":"Still: Terry's Appointment with Dr. Addison",
 			"deviceID": [10],
@@ -315,7 +315,7 @@
 	},{
 		"name": "Practice Control",
 		"id": "12",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide12.jpg",
 		"content":[{
 			"name":"Demo: Solutions Demo",
 			"deviceID": [10],
@@ -344,7 +344,7 @@
 	},{
 		"name": "Closing",
 		"id": "13",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background": "data/ipad-sit-slides/Slide13.jpg",
 		"content":[{
 			"name":"TBD",
 			"deviceID": [0,1,2],
