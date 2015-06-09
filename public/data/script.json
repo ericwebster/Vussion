@@ -78,20 +78,20 @@
 			"name":"PPT: athenahealth story",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
+			"media":"data/ipad-sit-slides/Slide2.jpg",
+			"poster":"data/ipad-sit-slides/Slide2.jpg"
 		},{
 			"name":"Video of Jonathan",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
+			"media":"data/ipad-sit-slides/Slide2.jpg",
+			"poster":"data/ipad-sit-slides/Slide2.jpg"
 		},{
 			"name":"PPT: Valley Health Intro",
 			"deviceID": [10],
 			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
+			"media":"data/ipad-sit-slides/Slide2.jpg",
+			"poster":"data/ipad-sit-slides/Slide2.jpg"
 		}]
 	},{
 		"name": "Patient Population Management",
@@ -119,7 +119,7 @@
 			"name":"Valley Health Professionals",
 			"deviceID": [0],
 			"type":"slides",
-			"media":"data/videos/portal.mp4",
+			"media":"data/videos/patient-population.mp4",
 			"poster":"data/Big-Disruptive-Facts/03.jpg"
 		},{
 			"name":"Stills of Valley Health Professionals",
