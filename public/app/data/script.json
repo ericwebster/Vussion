@@ -3,68 +3,68 @@
 	"devices":[{
 			"name":"ipad",
 			"freindlyName": "iPad",
-			"id":0
+			"id":"0"
 		},{
-			"name": "Dr. Addison ph iPhone",
+			"name": "Dr. Addison iPhone",
 			"freindlyName": "addison-iphone",
-			"id":1
+			"id":"1"
 		},{
 			"name": "Terry's iPhone",
 			"freindlyName": "terry-iphone",
-			"id": 2
-		},{
-			"name": "Dr Sharp's iPhone",
-			"freindlyName": "sharp-iphone",
-			"id": 3
+			"id": "2"
 		}],
 	"modules":[{
-		"name": "Walk In: Disruptive Facts",
+		"name": "Walk In: Key Facts",
 		"id": "1",
-		"background":"data/ipad-sit-slides/Slide1.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide1.jpg",
+			"1": "data/iphone-sit-slides/Slide1.jpg",
+			"2": "data/iphone-sit-slides/Slide1.jpg"
+		},
 		"content":[{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 1",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide1.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide1.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 2",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide2.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide2.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 3",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide3.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide3.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 4",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide4.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide4.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 5",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide5.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide5.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 6",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide6.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide6.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 7",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide7.jpg",
 			"poster":"data/key-facts/KeyFacts_Slide7.jpg"
 		},{
-			"name":"PPT: Key Facts",
+			"name":"PPT: Key Facts Slide 8",
 			"deviceID": [0],
 			"type":"slides",
 			"media":"data/key-facts/KeyFacts_Slide8.jpg",
@@ -73,269 +73,133 @@
 	},{
 		"name": "athenahealth story & Intro",
 		"id": "2",
-		"background": "data/ipad-sit-slides/Slide2.jpg",
-		"content":[{
-			"name":"PPT: athenahealth story",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
-		},{
-			"name":"Video of Jonathan",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
-		},{
-			"name":"PPT: Valley Health Intro",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/ipad-sit-slides/athena-story-ipad-sit.jpg",
-			"poster":"data/ipad-sit-slides/athena-story-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide2.jpg",
+			"1": "data/iphone-sit-slides/Slide2.jpg",
+			"2": "data/iphone-sit-slides/Slide2.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Patient Population Management",
 		"id": "3",
-		"background":"data/ipad-sit-slides/Slide3.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide3.jpg",
+			"1": "data/iphone-sit-slides/Slide3.jpg",
+			"2": "data/iphone-sit-slides/Slide3.jpg"
+		},
 		"content":[{
-			"name":"Roll Video",
+			"name":"Enterprise Care Manager",
 			"deviceID": [10],
-			"type":"slides",
+			"type":"videos",
 			"media":"data/Big-Disruptive-Facts/01.jpg",
 			"poster":"data/Big-Disruptive-Facts/01.jpg"
-		},{
-			"name":"athenahealth Nerve Center Overview",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/Big-Disruptive-Facts/02.jpg",
-			"poster":"data/Big-Disruptive-Facts/02.jpg"
-		},{
-			"name":"athenahealth Population health team",
-			"deviceID": [0],
-			"type":"slides",
-			"media":"data/videos/portal.mp4",
-			"poster":"data/Big-Disruptive-Facts/03.jpg"
-		},{
-			"name":"Valley Health Professionals",
-			"deviceID": [0],
-			"type":"slides",
-			"media":"data/videos/portal.mp4",
-			"poster":"data/Big-Disruptive-Facts/03.jpg"
-		},{
-			"name":"Stills of Valley Health Professionals",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/Sit_Slides/live-demo-sit.jpg",
-			"poster":"data/Sit_Slides/live-demo-sit.jpg"
 		}]
 	},{
 		"name": "Patient Engagement",
 		"id": "4",
-		"background": "data/ipad-sit-slides/Slide4.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide4.jpg",
+			"1": "data/iphone-sit-slides/Slide4.jpg",
+			"2": "data/iphone-sit-slides/Slide4.jpg"
+		},
 		"content":[{
-			"name":"Roll Patient Engagement Video 1",
+			"name":"Reminder Text Video",
 			"deviceID": [10],
-			"type":"slides",
+			"type":"videos",
 			"media":"data/Sit_Slides/product-pres-sit.jpg",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		},{
-			"name":"Terry pulls into driveway",
+			"name":"Online Portal",
 			"deviceID": [10],
-			"type":"slides",
+			"type":"videos",
 			"media":"data/Sit_Slides/product-pres-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry recieves reminder text",
-			"deviceID": [2],
-			"type":"video",
-			"media":"data/videos/engagement.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry Walks inside",
-			"deviceID": [2],
-			"type":"slides",
-			"media":"data/videos/engagement.mp4",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Mobile Scheduling demo",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Roll Patient Engagement Video 2",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry gets reminder call",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"data/Sit_Slides/product-pres-sit.jpg",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry logs onto patient portal",
-			"deviceID": [0],
-			"type":"video",
-			"media":"data/videos/portal.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
 		"name": "Front Office Productivity",
 		"id": "5",
-		"background": "data/ipad-sit-slides/Slide1.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide5.jpg",
+			"1": "data/iphone-sit-slides/Slide5.jpg",
+			"2": "data/iphone-sit-slides/Slide5.jpg"
+		},
 		"content":[{
-			"name":"Roll Front Office Productivity video",
+			"name":"3rd Party Co Pay animation",
 			"deviceID": [10],
-			"type":"slides",
+			"type":"videos",
 			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry walking away from Dr. Sharp's office",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry checking in with admin",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Terry making co-pay on kiosk",
-			"deviceID": [10],
-			"type":"video",
-			"media":"data/data/videos/portal.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
 		"name": "EHR Documentation and Productivity",
 		"id": "6",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
-		"content":[{
-			"name":"Stills of patient encounter",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Live Demo: Encounter Workflow",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Live Demo: Direct Scheduling MRI",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide6.jpg",
+			"1": "data/iphone-sit-slides/Slide6.jpg",
+			"2": "data/iphone-sit-slides/Slide6.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Financial Clearance",
 		"id": "7",
-		"background": "data/ipad-sit-slides/Slide7.jpg",
-		"content":[{
-			"name":"Stills: athenahealth communicates to insureance...",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"PPT Build: athena financial clearance process",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide7.jpg",
+			"1": "data/iphone-sit-slides/Slide7.jpg",
+			"2": "data/iphone-sit-slides/Slide7.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Document Management Services",
 		"id": "8",
-		"background": "data/ipad-sit-slides/Slide8.jpg",
-		"content":[{
-			"name":"Roll Animation: Document Management Services",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide8.jpg",
+			"1": "data/iphone-sit-slides/Slide8.jpg",
+			"2": "data/iphone-sit-slides/Slide8.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Network Efficiencies",
 		"id": "9",
-		"background": "data/ipad-sit-slides/Slide9.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide9.jpg",
+			"1": "data/iphone-sit-slides/Slide9.jpg",
+			"2": "data/iphone-sit-slides/Slide9.jpg"
+		},
 		"content":[{
-			"name":"Demo: Clinical Inbox Demo",
+			"name":"athenaText Notification",
 			"deviceID": [10],
-			"type":"slides",
+			"type":"videos",
 			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Demo: Doctor notifying staff to schedule Terry's appointment",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Demo: athena Secure Text Demo",
-			"deviceID": [3],
-			"type":"video",
-			"media":"data/data/videos/engagement.mp4",
 			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
 		}]
 	},{
 		"name": "Care Coordination",
 		"id": "10",
-		"background": "data/ipad-sit-slides/Slide10.jpg",
-		"content":[{
-			"name":"Demo: Coordinator portal",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide10.jpg",
+			"1": "data/iphone-sit-slides/Slide10.jpg",
+			"2": "data/iphone-sit-slides/Slide10.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Unified Patient Experience",
 		"id": "11",
-		"background": "data/ipad-sit-slides/Slide11.jpg",
-		"content":[{
-			"name":"Still: Terry's Appointment with Dr. Addison",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Demo: Network Facesheet",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide11.jpg",
+			"1": "data/iphone-sit-slides/Slide11.jpg",
+			"2": "data/iphone-sit-slides/Slide11.jpg"
+		},
+		"content":[]
 	},{
 		"name": "Practice Control",
 		"id": "12",
-		"background": "data/ipad-sit-slides/Slide12.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide12.jpg",
+			"1": "data/iphone-sit-slides/Slide12.jpg",
+			"2": "data/iphone-sit-slides/Slide12.jpg"
+		},
 		"content":[{
-			"name":"Demo: Solutions Demo",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Roll Video: athena never stops",
-			"deviceID": [10],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"PPT: Analytics and stats",
-			"deviceID": [0],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		},{
-			"name":"Roll Video: Testimonial",
+			"name":"Analytics and C-suite data slides",
 			"deviceID": [10],
 			"type":"slides",
 			"media":"/",
@@ -344,13 +208,11 @@
 	},{
 		"name": "Closing",
 		"id": "13",
-		"background": "data/ipad-sit-slides/Slide13.jpg",
-		"content":[{
-			"name":"TBD",
-			"deviceID": [0,1,2],
-			"type":"slides",
-			"media":"/",
-			"poster":"data/Sit_Slides/athena-live-qa-ipad-sit.jpg"
-		}]
+		"background":{
+			"0": "data/ipad-sit-slides/Slide13.jpg",
+			"1": "data/iphone-sit-slides/Slide13.jpg",
+			"2": "data/iphone-sit-slides/Slide13.jpg"
+		},
+		"content":[]
 	}]
 }

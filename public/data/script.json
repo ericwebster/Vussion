@@ -73,12 +73,20 @@
 	},{
 		"name": "athenahealth story & Intro",
 		"id": "2",
-		"background": "data/ipad-sit-slides/Slide2.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide2.jpg",
+			"1": "data/iphone-sit-slides/Slide2.jpg",
+			"2": "data/iphone-sit-slides/Slide2.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Patient Population Management",
 		"id": "3",
-		"background":"data/ipad-sit-slides/Slide3.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide3.jpg",
+			"1": "data/iphone-sit-slides/Slide3.jpg",
+			"2": "data/iphone-sit-slides/Slide3.jpg"
+		},
 		"content":[{
 			"name":"Enterprise Care Manager",
 			"deviceID": [10],
@@ -89,7 +97,11 @@
 	},{
 		"name": "Patient Engagement",
 		"id": "4",
-		"background": "data/ipad-sit-slides/Slide4.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide4.jpg",
+			"1": "data/iphone-sit-slides/Slide4.jpg",
+			"2": "data/iphone-sit-slides/Slide4.jpg"
+		},
 		"content":[{
 			"name":"Reminder Text Video",
 			"deviceID": [10],
@@ -106,7 +118,11 @@
 	},{
 		"name": "Front Office Productivity",
 		"id": "5",
-		"background": "data/ipad-sit-slides/Slide1.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide5.jpg",
+			"1": "data/iphone-sit-slides/Slide5.jpg",
+			"2": "data/iphone-sit-slides/Slide5.jpg"
+		},
 		"content":[{
 			"name":"3rd Party Co Pay animation",
 			"deviceID": [10],
@@ -117,22 +133,38 @@
 	},{
 		"name": "EHR Documentation and Productivity",
 		"id": "6",
-		"background": "data/Sit_Slides/athena-live-qa-ipad-sit.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide6.jpg",
+			"1": "data/iphone-sit-slides/Slide6.jpg",
+			"2": "data/iphone-sit-slides/Slide6.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Financial Clearance",
 		"id": "7",
-		"background": "data/ipad-sit-slides/Slide7.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide7.jpg",
+			"1": "data/iphone-sit-slides/Slide7.jpg",
+			"2": "data/iphone-sit-slides/Slide7.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Document Management Services",
 		"id": "8",
-		"background": "data/ipad-sit-slides/Slide8.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide8.jpg",
+			"1": "data/iphone-sit-slides/Slide8.jpg",
+			"2": "data/iphone-sit-slides/Slide8.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Network Efficiencies",
 		"id": "9",
-		"background": "data/ipad-sit-slides/Slide9.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide9.jpg",
+			"1": "data/iphone-sit-slides/Slide9.jpg",
+			"2": "data/iphone-sit-slides/Slide9.jpg"
+		},
 		"content":[{
 			"name":"athenaText Notification",
 			"deviceID": [10],
@@ -143,17 +175,29 @@
 	},{
 		"name": "Care Coordination",
 		"id": "10",
-		"background": "data/ipad-sit-slides/Slide10.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide10.jpg",
+			"1": "data/iphone-sit-slides/Slide10.jpg",
+			"2": "data/iphone-sit-slides/Slide10.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Unified Patient Experience",
 		"id": "11",
-		"background": "data/ipad-sit-slides/Slide11.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide11.jpg",
+			"1": "data/iphone-sit-slides/Slide11.jpg",
+			"2": "data/iphone-sit-slides/Slide11.jpg"
+		},
 		"content":[]
 	},{
 		"name": "Practice Control",
 		"id": "12",
-		"background": "data/ipad-sit-slides/Slide12.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide12.jpg",
+			"1": "data/iphone-sit-slides/Slide12.jpg",
+			"2": "data/iphone-sit-slides/Slide12.jpg"
+		},
 		"content":[{
 			"name":"Analytics and C-suite data slides",
 			"deviceID": [10],
@@ -164,7 +208,11 @@
 	},{
 		"name": "Closing",
 		"id": "13",
-		"background": "data/ipad-sit-slides/Slide13.jpg",
+		"background":{
+			"0": "data/ipad-sit-slides/Slide13.jpg",
+			"1": "data/iphone-sit-slides/Slide13.jpg",
+			"2": "data/iphone-sit-slides/Slide13.jpg"
+		},
 		"content":[]
 	}]
 }
